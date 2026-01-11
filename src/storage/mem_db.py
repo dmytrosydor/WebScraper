@@ -1,34 +1,45 @@
-from pprint import pprint
+import json
+import aiofiles
+from pathlib import Path
 
-tasks_db = {}
+DATA_DIR = Path("storage")
+DATA_DIR.mkdir(exist_ok=True)
 
+async def _get_file_path(task_id: str) -> Path:
+    return DATA_DIR / f"{task_id}.json"
+
+def json_serializer(obj):
+    if hasattr(obj, 'model_dump'):
+        return obj.model_dump()
+    if hasattr(obj, 'dict'):
+        return obj.dict()
+    return str(obj)
 
 async def save_task(task_id: str, task_data: dict):
-    tasks_db[task_id] = task_data
-    print("\n[SAVE TASK]")
-    pprint(tasks_db, width=120)
-
+    file_path = await _get_file_path(task_id)
+    async with aiofiles.open(file_path, mode='w', encoding='utf-8') as f:
+        await f.write(json.dumps(task_data, default=json_serializer, indent=4, ensure_ascii=False))
 
 async def get_task(task_id: str):
-    print("\n[GET TASK]")
-    pprint(tasks_db, width=120)
-    return tasks_db.get(task_id)
-
+    file_path = await _get_file_path(task_id)
+    if not file_path.exists():
+        return None
+    
+    async with aiofiles.open(file_path, mode='r', encoding='utf-8') as f:
+        content = await f.read()
+        return json.loads(content)
 
 async def update_task_status(task_id: str, status: str, result=None, error_message=None):
-    task = tasks_db.get(task_id)
-    if task:
-        task['status'] = status
-        if result is not None:
-            task['result'] = result
-        if error_message is not None:
-            task['error_message'] = error_message
+    current_data = await get_task(task_id)
+    if not current_data:
+        print(f"[ERROR] Task {task_id} not found for update")
+        return
+    
+    current_data['status'] = status
+    if result is not None:
+        current_data['result'] = result
+    if error_message is not None:
+        current_data['error_message'] = error_message
 
-        tasks_db[task_id] = task
-
-        print("\n[UPDATE TASK]")
-        pprint(tasks_db, width=120)
-
-
-
+    await save_task(task_id, current_data)
 

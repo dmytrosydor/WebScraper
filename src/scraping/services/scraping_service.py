@@ -12,7 +12,6 @@ class ScrapingService:
     async def start(self, request):
         task_id = str(uuid.uuid4())
         
-        # 1. Створюємо об'єкт задачі
         task_data = {
             "task_id": task_id,
             "status": TaskStatus.pending,
@@ -30,10 +29,18 @@ class ScrapingService:
         )
         
 
-    async def get_status(self, task_id: str):
+    async def get_status(self, task_id: str) -> ScrapeResponse | None:
         task = await get_task(task_id)
-        if task: 
-            return task
+        if not task:
+            return None
+
+        return ScrapeResponse(
+            task_id=task["task_id"],
+            status=task["status"],
+            result=task.get("result"),
+            error_message=task.get("error_message")
+        )
+
 
     async def _process_scraping(self, task_id: str, request: ScrapeRequest):
         try:
