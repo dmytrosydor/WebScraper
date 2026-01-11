@@ -51,3 +51,5 @@ tmp/
 temp/
 
 .ipynb_checkpoints/
+
+*.html
