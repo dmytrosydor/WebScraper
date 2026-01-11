@@ -1,4 +1,4 @@
-from typing import Optional, Any
+from typing import Optional, Any, List
 from pydantic import BaseModel, HttpUrl
 from enum import Enum
 
@@ -15,6 +15,9 @@ class TaskStatus(str, Enum):
     failed = "failed"
     completed = "completed"
 
+class MovieShort(BaseModel):
+    title: str
+    link: HttpUrl
 
 class ScrapeRequest(BaseModel):
     query: str
@@ -24,5 +27,5 @@ class ScrapeRequest(BaseModel):
 class ScrapeResponse(BaseModel):
     task_id: str
     status: TaskStatus
-    result: Optional[Any] = None
+    result: Optional[List[MovieShort]] = None
     error_message: Optional[str] = None
