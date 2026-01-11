@@ -1,46 +1,51 @@
 import httpx
 from bs4 import BeautifulSoup
+
 from src.scraping.schemas import MovieShort
 from src.config.scraping import scraping_config, GENRES_MAP, KINORIUM_ENDPOINTS
+
 
 class KinoriumParser:
     def __init__(self):
         self.client = httpx.AsyncClient(
             base_url=scraping_config.base_url,
-            headers = {
+            headers={
                 "User-Agent": scraping_config.user_agent,
-                "referrer": scraping_config.base_url + "/",
+                "Referer": scraping_config.base_url + "/",
                 "Accept": "application/json, text/javascript, */*; q=0.01",
                 "X-Requested-With": "XMLHttpRequest",
             },
             timeout=scraping_config.request_timeout,
             follow_redirects=True,
         )
-        
 
-    async def scrape_by_genre(self, genre_name: str, kinorium_endpoint=KINORIUM_ENDPOINTS["film_list"]):
+    async def scrape_by_genre(
+        self,
+        genre_name: str,
+        kinorium_endpoint: str = KINORIUM_ENDPOINTS["film_list"],
+    ):
         genre_id = GENRES_MAP.get(genre_name.lower())
         if not genre_id:
-            print(f"Genre '{genre_name}' not found.")
             return []
 
         params = {
-                    "type": "home",
-                    "order": "rating",
-                    "page": 1,
-                    "perpage": 50,
-                    "show_viewed": 1,
-                    "genres[]": genre_id,
-                }
+            "type": "home",
+            "order": "rating",
+            "page": 1,
+            "perpage": 50,
+            "show_viewed": 1,
+            "genres[]": genre_id,
+        }
 
-        r = await self.client.get(
-            scraping_config.base_url + kinorium_endpoint, params=params
-        )
-        r.raise_for_status()
-        data = r.json()
+        response = await self.client.get(kinorium_endpoint, params=params)
+        response.raise_for_status()
 
-        # JSON містить HTML всередині ключа
-        html = data.get("html") or data.get("content") or ""
+        data = response.json()
+
+        html = data.get("result", {}).get("html", "")
+        if not html:
+            return []
+
         soup = BeautifulSoup(html, "html.parser")
 
         results = []
@@ -48,17 +53,30 @@ class KinoriumParser:
             link_tag = item.select_one("a.filmList__item-title")
             if not link_tag:
                 continue
+
             title_span = link_tag.select_one("span.title")
-            title = title_span.get_text(strip=True) if title_span else link_tag.get_text(strip=True)
+            title = (
+                title_span.get_text(strip=True)
+                if title_span
+                else link_tag.get_text(strip=True)
+            )
+
             href = link_tag.get("href")
-            full_link = self.BASE_URL + href if href and href.startswith("/") else href # pyright: ignore[reportOperatorIssue, reportAttributeAccessIssue]
+            if not href:
+                continue
+
+            full_link = (
+                scraping_config.base_url + href # type: ignore
+                if href.startswith("/") # type: ignore
+                else href
+            )
+
             results.append(MovieShort(title=title, link=full_link)) # type: ignore
+
         return results
 
     async def close(self):
         await self.client.aclose()
 
-
-
     async def scrape_movie_details(self, movie_id):
-            pass
+        pass
