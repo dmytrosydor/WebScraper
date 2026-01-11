@@ -53,3 +53,4 @@ temp/
 .ipynb_checkpoints/
 
 *.html
+/storage/*.json
