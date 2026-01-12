@@ -42,5 +42,5 @@ class ScrapeRequest(BaseModel):
 class ScrapeResponse(BaseModel):
     task_id: str
     status: TaskStatus
-    result: Optional[List[Any]] = None
+    result: Optional[Any] = None
     error_message: Optional[str] = None

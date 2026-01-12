@@ -39,6 +39,7 @@ class ScrapingService:
     async def get_status(self, task_id: str) -> ScrapeResponse | None:
         task = await get_task(task_id)
         if not task:
+            logger.warning(f"Client requested non-existent task_id: {task_id}")
             return None
 
         return ScrapeResponse(
@@ -59,5 +60,4 @@ class ScrapingService:
             return await self.parser.scrape_movie_details(request.query)
         
         else:
-            # Якщо кинути помилку тут, декоратор її зловить і запише в БД
             raise ValueError(f"Unsupported scraping mode: {request.mode}")
