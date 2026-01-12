@@ -21,14 +21,18 @@ class MovieShort(BaseModel):
 
 class MovieDetails(BaseModel):
     title: str
-    year: Optional[str] = None
-    country: Optional[str] = None
+    original_title: Optional[str]
+    year: Optional[int]
+    rating: Optional[float]
     genres: List[str] = []
-    rating: Optional[str] = None
+    countries: List[str] =[]
+    duration_minutes: Optional[int] = None
     description: Optional[str] = None
-    director: Optional[str] = None
+    production_studios: List[str] = []
     actors: List[str] = []
-    url: HttpUrl
+    poster_url: Optional[str] = None
+    kinorium_url: HttpUrl
+
 
 class ScrapeRequest(BaseModel):
     query: str
@@ -38,5 +42,5 @@ class ScrapeRequest(BaseModel):
 class ScrapeResponse(BaseModel):
     task_id: str
     status: TaskStatus
-    result: Optional[List[MovieShort]] = None
+    result: Optional[List[Any]] = None
     error_message: Optional[str] = None
