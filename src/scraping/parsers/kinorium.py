@@ -1,8 +1,12 @@
 import logging
 import httpx
 from bs4 import BeautifulSoup
+from playwright.async_api import async_playwright
+import re
 
-from src.scraping.schemas import MovieShort
+import urllib
+
+from src.scraping.schemas import MovieShort, MovieDetails
 from src.config.scraping import (
     scraping_config,
     GENRES_MAP,
@@ -102,8 +106,127 @@ class KinoriumParser:
         logger.info(f"Successfully scraped {len(results)} movies for genre '{genre_name}' on page {page}")
         return results
 
-    async def scrape_movie_details(self, movie_id):
-        pass
 
+    async def scrape_movie_details(self, movie_title: str) -> MovieDetails:
+        async with async_playwright() as p:
+            browser = await p.chromium.launch(headless=True)
+            page = await browser.new_page(
+                user_agent=scraping_config.user_agent
+            )
 
+            # Search movie
+            encoded_query = urllib.parse.quote(movie_title) # for cases like film "1 + 1", without this it will fail to find the movie
+            search_url = f"{scraping_config.base_url}/search/?q={encoded_query}"
+            logger.info(f"Searching for movie: {movie_title} using URL: {search_url}")
+            await page.goto(search_url, timeout=30000)
+            results = page.locator("a.search-page__title-link")
+            if await results.count() == 0:
+                raise ValueError("Movie not found in search results")
 
+            movie_href = await results.first.get_attribute("href")
+
+            if not movie_href:
+                raise ValueError("Movie not found in search results")
+
+            kinorium_url = (
+                scraping_config.base_url + movie_href
+                if movie_href.startswith("/")
+                else movie_href
+            )
+
+            await page.goto(kinorium_url, wait_until="networkidle")
+            await page.wait_for_selector("h1.film-page__title-text", timeout=30000)
+
+            # Parse fields
+
+            title = await page.text_content("h1.film-page__title-text")
+
+            original_title = await page.text_content(
+                "span[itemprop='alternativeHeadline']"
+            )
+
+            year_text = await page.text_content(
+                "span.film-page__date a"
+            )
+            year = int(year_text) if year_text and year_text.isdigit() else None
+
+            rating_locator = page.locator("div.film-page__title-rating")
+            
+            try:
+                await rating_locator.wait_for(state="attached", timeout=500) # if json is loading
+                is_rating_present = True
+            except:
+                is_rating_present = False
+
+            if is_rating_present:
+                rating_text = await rating_locator.text_content()
+                rating_text = rating_text.strip()
+                rating = (
+                    float(rating_text)
+                    if rating_text and rating_text.replace(".", "").isdigit()
+                    else None
+                )
+            else:
+                logger.warning(f"Rating block not found for movie: {title}")
+                rating = None
+
+            genres = await page.eval_on_selector_all(
+                "li[itemprop='genre'] a",
+                "els => els.map(e => e.textContent.trim())"
+            )
+
+            countries = await page.eval_on_selector_all(
+                "a[itemprop='countryOfOrigin']",
+                "els => els.map(e => e.textContent.trim())"
+            )
+
+            duration_minutes = None
+            rows = page.locator("tr")
+
+            for i in range(await rows.count()):
+                row = rows.nth(i)
+                legend = await row.locator("td.legend").text_content()
+                if legend and "тривалість" in legend.lower():
+                    duration_text = await row.locator("td.data").text_content()
+                    if duration_text:
+                        match = re.search(r"(\d+)\s*год\s*(\d+)\s*хв", duration_text)
+                        if match:
+                            hours = int(match.group(1))
+                            minutes = int(match.group(2))
+                            duration_minutes = hours * 60 + minutes
+                    break
+            description = await page.text_content(
+                "section.film-page__text[itemprop='description']"
+            )
+
+            production_studios = await page.eval_on_selector_all(
+                "span.film-page__company a nobr",
+                "els => els.map(e => e.textContent.trim())"
+            )
+
+            actors = await page.eval_on_selector_all(
+                "div.film-page__cast-item[itemprop='actor'] span[itemprop='name']",
+                "els => els.slice(0, 10).map(e => e.textContent.trim())"
+            )
+
+            poster_url = await page.get_attribute(
+                "div.carousel_image-handler img",
+                "src"
+            )
+
+            await browser.close()
+
+            return MovieDetails(
+                title=title.strip(), # type: ignore
+                original_title=original_title.strip() if original_title else None,
+                year=year,
+                rating=rating,
+                genres=genres,
+                countries=countries,
+                duration_minutes=duration_minutes,
+                description=description.strip() if description else None,
+                production_studios=production_studios,
+                actors=actors,
+                poster_url=poster_url,
+                kinorium_url=kinorium_url, # type: ignore
+            )

@@ -1,9 +1,11 @@
+import functools
 import logging
 import asyncio
 import uuid
 from src.scraping.schemas import ScrapeRequest, ScrapeResponse, ScrapingMode, TaskStatus
-from src.storage.mem_db import save_task, get_task, update_task_status
+from src.database.mem_db import save_task, get_task, update_task_status
 from src.scraping.parsers.kinorium import KinoriumParser
+from src.utils.decorators import task_monitor
 
 logger = logging.getLogger(__name__)
 
@@ -47,45 +49,15 @@ class ScrapingService:
         )
 
 
+
+    @task_monitor
     async def _process_scraping(self, task_id: str, request: ScrapeRequest):
-        logger.info(f"Processing scraping task ID: {task_id} for query: {request.query}")
-        try:
-            await update_task_status(task_id, TaskStatus.in_progress)
-
-            if request.mode == ScrapingMode.http:
-                result = await self.parser.scrape_by_genre(request.query)
-            else:
-                logger.warning(f"Task {task_id}: Unsupported scraping mode: {request.mode}")
-                raise ValueError("Unsupported scraping mode: {request.mode}")
-
-            await update_task_status(
-                task_id,
-                TaskStatus.completed,
-                result=result
-            )
-            logger.info(f"Task {task_id} completed successfully")
-
-        except TimeoutError as e:
-            logger.error(f"Task {task_id} failed due to timeout: {str(e)}")
-            await update_task_status(
-                task_id,
-                TaskStatus.failed,
-                error_message=f"Timeout: {str(e)}"
-            )
-
-        except ConnectionError as e:
-            logger.error(f"Task {task_id} failed due to connection error: {str(e)}")
-            await update_task_status(
-                task_id,
-                TaskStatus.failed,
-                error_message=f"Connection error: {str(e)}"
-            )
+        if request.mode == ScrapingMode.http:
+            return await self.parser.scrape_by_genre(request.query)
         
-        except Exception as e:
-            logger.error(f"Task {task_id} failed with error: {str(e)}")
-            await update_task_status(
-                task_id,
-                TaskStatus.failed,
-                error_message=f"Error: {str(e)}"
-            )
-            
+        elif request.mode == ScrapingMode.headless:
+            return await self.parser.scrape_movie_details(request.query)
+        
+        else:
+            # Якщо кинути помилку тут, декоратор її зловить і запише в БД
+            raise ValueError(f"Unsupported scraping mode: {request.mode}")
