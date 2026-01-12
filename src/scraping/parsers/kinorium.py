@@ -91,6 +91,10 @@ class KinoriumParser:
             title_span = link_tag.find("span", class_="title")
             title = title_span.get_text(strip=True) if title_span else None
 
+            if not title:
+                logger.warning(f"Skipping item without title. Link: {href}") # Case when title is missing (without this will be pydantic.ValidationError)
+                continue
+
             href = link_tag.get("href")
             if not href:
                 continue
@@ -109,13 +113,13 @@ class KinoriumParser:
 
     async def scrape_movie_details(self, movie_title: str) -> MovieDetails:
         async with async_playwright() as p:
-            browser = await p.chromium.launch(headless=True)
+            browser = await p.chromium.launch(headless=True, args=["--no-sandbox", "--disable-setuid-sandbox", "--disable=gpu"])
             page = await browser.new_page(
                 user_agent=scraping_config.user_agent
             )
 
             # Search movie
-            encoded_query = urllib.parse.quote(movie_title) # for cases like film "1 + 1", without this it will fail to find the movie
+            encoded_query = urllib.parse.quote(movie_title) # for cases like film "1 + 1", without this it will fail to find the movie # type: ignore 
             search_url = f"{scraping_config.base_url}/search/?q={encoded_query}"
             logger.info(f"Searching for movie: {movie_title} using URL: {search_url}")
             await page.goto(search_url, timeout=30000)
@@ -160,7 +164,7 @@ class KinoriumParser:
 
             if is_rating_present:
                 rating_text = await rating_locator.text_content()
-                rating_text = rating_text.strip()
+                rating_text = rating_text.strip() # type: ignore
                 rating = (
                     float(rating_text)
                     if rating_text and rating_text.replace(".", "").isdigit()
