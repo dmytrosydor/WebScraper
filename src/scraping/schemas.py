@@ -19,6 +19,17 @@ class MovieShort(BaseModel):
     title: str
     link: HttpUrl
 
+class MovieDetails(BaseModel):
+    title: str
+    year: Optional[str] = None
+    country: Optional[str] = None
+    genres: List[str] = []
+    rating: Optional[str] = None
+    description: Optional[str] = None
+    director: Optional[str] = None
+    actors: List[str] = []
+    url: HttpUrl
+
 class ScrapeRequest(BaseModel):
     query: str
     mode: ScrapingMode

@@ -1,3 +1,4 @@
+import logging
 import httpx
 from bs4 import BeautifulSoup
 
@@ -9,7 +10,13 @@ from src.config.scraping import (
 )
 
 
+logger = logging.getLogger(__name__)
+
+    
+
 class KinoriumParser:
+    
+    # Method 1
     async def scrape_by_genre(
         self,
         genre_name: str,
@@ -17,6 +24,10 @@ class KinoriumParser:
         perpage: int = 50,
     ):
         genre_id = GENRES_MAP.get(genre_name, 13)
+
+        if not genre_id:
+            raise ValueError(f"Unknown genre: {genre_name}")
+
 
         url = scraping_config.base_url + KINORIUM_ENDPOINTS["film_list"]
 
@@ -35,24 +46,35 @@ class KinoriumParser:
             "show_viewed": 1,
             "genres[]": genre_id,
         }
+        try:    
 
-        async with httpx.AsyncClient(
-            headers=headers,
-            timeout=scraping_config.request_timeout,
-        ) as client:
-            response = await client.get(url, params=params)
-            print(f"Status code: {response.status_code}")
+            logger.info(f"Starting scraping for genre '{genre_name}' (ID: {genre_id}) - Page {page}")
+            async with httpx.AsyncClient(
+                headers=headers,
+                timeout=scraping_config.request_timeout,
+            ) as client:
+                response = await client.get(url, params=params)
 
+                logger.info(f"Received response status: {response.status_code}")
+             
             try:
                 data = response.json()
-                html = data.get("result", {}).get("html", "")
-                if not html:
-                    print("HTML не знайдено, повертаємо пустий список")
-                    return []
             except ValueError:
-                print("Не JSON:")
-                print(response.text[:2000])
-                return []
+                raise ValueError("Invalid JSON response from Kinorium. Status code: {response.status_code}")
+            
+            html = data.get("result", {}).get("html", "")
+            if not html:
+                logger.warning("No HTML content found in the response")
+                return [] 
+        except httpx.TimeoutException as e:
+            raise TimeoutError(f"Kinorium did not respond in {scraping_config.request_timeout} seconds") 
+        except httpx.HTTPStatusError as e:
+            # Errors from website like: 404, 500 , 503
+            raise RuntimeError(f"Kinorium returned HTTP error: {str(e)}")
+        except httpx.RequestError as e:
+            raise ConnectionError(f"Error connecting to Kinorium: {str(e)}")    
+            
+
 
         soup = BeautifulSoup(html, "html.parser")
 
@@ -70,13 +92,14 @@ class KinoriumParser:
                 continue
 
             full_link = (
-                scraping_config.base_url + href
-                if href.startswith("/")
+                scraping_config.base_url + href # type: ignore
+                if href.startswith("/") # type: ignore
                 else href
             )
 
-            results.append(MovieShort(title=title, link=full_link))
+            results.append(MovieShort(title=title, link=full_link)) # type: ignore
 
+        logger.info(f"Successfully scraped {len(results)} movies for genre '{genre_name}' on page {page}")
         return results
 
     async def scrape_movie_details(self, movie_id):
