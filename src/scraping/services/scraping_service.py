@@ -15,7 +15,8 @@ class ScrapingService:
         self.parser = KinoriumParser()
 
     async def start(self, request):
-        task_id = str(uuid.uuid4())
+        raw_uuid = str(uuid.uuid4())
+        task_id = f"{request.mode.value}_{raw_uuid}" # just for easier identification
 
         logger.info(f"Created a new scraping task with ID: {task_id}, for query: {request.query}")
         
