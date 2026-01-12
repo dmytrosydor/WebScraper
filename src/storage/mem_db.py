@@ -1,9 +1,14 @@
+import logging
 import json
 import aiofiles
 from pathlib import Path
 
 DATA_DIR = Path("storage")
 DATA_DIR.mkdir(exist_ok=True)
+
+logger = logging.getLogger(__name__)
+
+#TODO: Make a separete folders for different types of requests (FIlm list, film details, ...)
 
 async def _get_file_path(task_id: str) -> Path:
     return DATA_DIR / f"{task_id}.json"
@@ -32,7 +37,7 @@ async def get_task(task_id: str):
 async def update_task_status(task_id: str, status: str, result=None, error_message=None):
     current_data = await get_task(task_id)
     if not current_data:
-        print(f"[ERROR] Task {task_id} not found for update")
+        logger.error(f"Task {task_id} not found in DB during update attempt")
         return
     
     current_data['status'] = status
