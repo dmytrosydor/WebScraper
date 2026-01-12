@@ -3,15 +3,26 @@ import json
 import aiofiles
 from pathlib import Path
 
+
 DATA_DIR = Path("storage")
-DATA_DIR.mkdir(exist_ok=True)
+(DATA_DIR / "http").mkdir(parents=True, exist_ok=True)
+(DATA_DIR / "headless").mkdir(parents=True, exist_ok=True)
 
 logger = logging.getLogger(__name__)
 
-#TODO: Make a separete folders for different types of requests (FIlm list, film details, ...)
-
 async def _get_file_path(task_id: str) -> Path:
+    
+    try:
+        mode, _ = task_id.split("_", 1)
+    except ValueError:
+        return DATA_DIR / f"{task_id}.json"
+
+    
+    if mode in ["http", "headless"]:
+        return DATA_DIR / mode / f"{task_id}.json"
+    
     return DATA_DIR / f"{task_id}.json"
+
 
 def json_serializer(obj):
     if hasattr(obj, 'model_dump'):

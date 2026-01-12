@@ -30,7 +30,6 @@ class MovieDetails(BaseModel):
     description: Optional[str] = None
     production_studios: List[str] = []
     actors: List[str] = []
-    poster_url: Optional[str] = None
     kinorium_url: HttpUrl
 
 
