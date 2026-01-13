@@ -12,10 +12,7 @@ class KinoriumUIParser(KinoriumBaseParser):
     async def parse(self, movie_title: str) -> dict:
         logger.info(f"Starting UI mode for '{movie_title}'")
 
-        try:
-            final_url = await self._find_movie_url_helper(movie_title)
-        except ValueError as e:
-            return {"status": "error", "message": str(e)}
+        final_url = await self._find_movie_url_helper(movie_title)
 
         self._open_in_system_browser(final_url)
         return UIActionResponse(
@@ -24,8 +21,9 @@ class KinoriumUIParser(KinoriumBaseParser):
         
     def _open_in_system_browser(self, url: str) -> None:
         logger.info(f"Opening system browser: {url}")
-        webbrowser.open(url, new=2)
-
+        success = webbrowser.open(url, new=2)
+        if not success:
+            logger.warning(f"Failed to open the system web browser for URL {url}.")
     async def _find_movie_url_helper(self, movie_title: str) -> str:
         async with async_playwright() as p:
             browser = await self._launch_browser(p)

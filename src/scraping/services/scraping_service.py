@@ -34,11 +34,12 @@ class ScrapingService:
         
         await save_task(task_id, task_data) 
 
-        asyncio.create_task(self._process_scraping(task_id, request))
+        result = await self._process_scraping(task_id, request)
 
         return ScrapeResponse(
             task_id=task_id,
-            status=TaskStatus.pending
+            status=TaskStatus.completed,
+            result=result
         )
         
 

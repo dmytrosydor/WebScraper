@@ -18,7 +18,7 @@ class KinoriumHttpParser:
         page: int = 1,
         perpage: int = 50,
     ):
-        genre_id = GENRES_MAP.get(genre_name, 13)
+        genre_id = GENRES_MAP.get(genre_name.lower())
 
         if not genre_id:
             raise ValueError(f"Unknown genre: {genre_name}")
