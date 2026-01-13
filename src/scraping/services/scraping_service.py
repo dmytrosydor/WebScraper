@@ -1,10 +1,9 @@
-import functools
 import logging
 import asyncio
 import uuid
 from src.scraping.schemas import ScrapeRequest, ScrapeResponse, ScrapingMode, TaskStatus
-from src.database.mem_db import save_task, get_task, update_task_status
-from src.scraping.parsers.headless_pareser import KinoriumHeadlessParser
+from src.database.mem_db import save_task, get_task
+from src.scraping.parsers.headless_parser import KinoriumHeadlessParser
 from src.scraping.parsers.http_parser import KinoriumHttpParser
 from src.scraping.parsers.ui_parser import KinoriumUIParser 
 from src.utils.decorators import task_monitor

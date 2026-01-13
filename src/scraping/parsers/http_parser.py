@@ -85,7 +85,7 @@ class KinoriumHttpParser:
             if not title:
                 logger.warning(f"Skipping item without title. Link: {href}") # Case when title is missing (without this will be pydantic.ValidationError)
                 continue
-
+           
             href = link_tag.get("href")
             if not href:
                 continue

@@ -15,6 +15,7 @@ class ScrapingConfig:
 
 scraping_config = ScrapingConfig()
 
+# --- For http parser ---
 
 GENRES_MAP = {
     "аніме": 1,

@@ -15,10 +15,13 @@ class TaskStatus(str, Enum):
     failed = "failed"
     completed = "completed"
 
+# schema for http
 class MovieShort(BaseModel):
     title: str
     link: HttpUrl
 
+
+# schema for headless    
 class MovieDetails(BaseModel):
     title: str
     original_title: Optional[str]
@@ -27,12 +30,14 @@ class MovieDetails(BaseModel):
     genres: List[str] = []
     countries: List[str] =[]
     duration_minutes: Optional[int] = None
-
-    
     description: Optional[str] = None
     production_studios: List[str] = []
     actors: List[str] = []
     kinorium_url: HttpUrl
+
+# schema for ui
+class UIActionResponse(BaseModel):
+    opened_url: HttpUrl
 
 class ScrapeRequest(BaseModel):
     query: str
@@ -44,6 +49,3 @@ class ScrapeResponse(BaseModel):
     status: TaskStatus
     result: Optional[Any] = None
     error_message: Optional[str] = None
-
-class UIActionResponse(BaseModel):
-    opened_url: HttpUrl

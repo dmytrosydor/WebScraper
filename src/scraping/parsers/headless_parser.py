@@ -4,28 +4,28 @@ import re
 
 from src.scraping.schemas import MovieDetails
 from src.config.scraping import scraping_config
-from src.scraping.parsers.base import KinoriumBaseParser # Імпортуємо базу
+from src.scraping.parsers.base import KinoriumBaseParser 
 
 logger = logging.getLogger(__name__)
 
-class KinoriumHeadlessParser(KinoriumBaseParser): # Успадковуємось
+class KinoriumHeadlessParser(KinoriumBaseParser): 
     
     async def parse(self, movie_title: str) -> MovieDetails:
         async with async_playwright() as p:
             
-            # 1. Запуск (спільна логіка)
+            
             browser = await self._launch_browser(p)
             
             page = await browser.new_page(user_agent=scraping_config.user_agent)
             
-            # Унікальна оптимізація для headless (блокування картинок) залишається тут
+           
             await page.route("**/*", lambda route: route.abort() 
-                if route.request.resource_type in ["image", "media", "font", "stylesheet"]
+                if route.request.resource_type in ["image", "media", "font", "stylesheet"] # optimize loading by blocking unnecessary resources
                 else route.continue_()
             )
             
-            # 2. Пошук (спільна логіка)
-            # Ми отримуємо URL і переходимо на нього, замість того щоб дублювати код пошуку
+           
+            # Getting the movie URL and navigating to it
             try:
                 kinorium_url = await self._search_movie_url(page, movie_title)
                 logger.info(f"Found movie URL: {kinorium_url}")
@@ -34,8 +34,8 @@ class KinoriumHeadlessParser(KinoriumBaseParser): # Успадковуємось
                 await browser.close()
                 raise e
 
-            # 3. Парсинг деталей (Це унікальна логіка цього класу, вона лишається без змін)
             
+            # --- Extracting movie details ---
             # wait for main title to load
             try:
                 await page.wait_for_selector("h1.film-page__title-text", timeout=15000)

@@ -46,7 +46,7 @@ dist/
 *.egg-info/
 
 
-logs/
+logs/*.log
 tmp/
 temp/
 
