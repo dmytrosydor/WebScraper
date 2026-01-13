@@ -1,5 +1,6 @@
 import time
 import requests
+import webbrowser
 
 
 BASE_URL = "http://127.0.0.1:8000/api"
@@ -140,8 +141,11 @@ def run_ui_scraping():
         
         if result:
             print_separator()
+            url = result.get('opened_url')
             print(f"[SUCCESS] Фільм відкрито у браузері.")
-            print(f"URL: {result.get('opened_url')}")
+            print(f"URL: {result.get('opened_url')}") # DOCKER cant open browser manually so we get adreess to open it ourselves
+            if url:
+                webbrowser.open(url)
             print_separator()
 
     except Exception as e:
