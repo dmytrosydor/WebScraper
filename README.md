@@ -51,7 +51,7 @@ docker run -d -p 8000:8000 --name my-app-instance dmytrosydor/webscraper:latest
 У папці `postman_collection` знаходиться готова колекція запитів.
 * **Імпорт:** Postman → File → Import → обрати `.json` файл.
 
-### Варіант 2 — Python client (Docker)
+### Варіант 2 — Python client (Docker образ повинен бути запущений)
 Оскільки Docker не може відкривати вікно браузера, для тестування використовується клієнтський скрипт `client_test.py`.
 
 #### Налаштування середовища 
