@@ -1,7 +1,5 @@
 import time
 import requests
-import sys
-import json
 
 # Конфігурація
 BASE_URL = "http://127.0.0.1:8000/api"
@@ -20,7 +18,7 @@ def print_separator():
 
 def poll_task_status(task_id):
     """Функція опитування статусу (Polling)"""
-    print(f"✅ Задача створена! ID: {task_id}")
+    print(f"[OK] Задача створена! ID: {task_id}")
     print("Очікування результату (оновлення кожні 1 сек)...")
     
     start_time = time.time()
@@ -34,7 +32,7 @@ def poll_task_status(task_id):
             status_resp.raise_for_status()
             task_info = status_resp.json()
         except Exception as e:
-            print(f"️ Помилка з'єднання: {e}")
+            print(f"[ERROR] Помилка з'єднання: {e}")
             continue
 
         status = task_info["status"]
@@ -44,17 +42,17 @@ def poll_task_status(task_id):
             return task_info.get("result")
         
         elif status == "failed":
-            print(f"\nПОМИЛКА СЕРВЕРА: {task_info.get('error_message')}")
+            print(f"\n[FAIL] ПОМИЛКА СЕРВЕРА: {task_info.get('error_message')}")
             return None
 
 def run_genre_scraping():
     print("\n--- ПОШУК ЗА ЖАНРОМ ---")
     print(f"Доступні жанри: {', '.join(VALID_GENRES[:10])}...")
     
-    genre = input("️Введіть жанр (наприклад 'драма'): ").strip().lower()
+    genre = input("Введіть жанр (наприклад 'драма'): ").strip().lower()
     
     if not genre:
-        print("️Жанр не може бути порожнім!")
+        print("[!] Жанр не може бути порожнім!")
         return
 
     print(f"Відправляю запит на топ фільмів у жанрі '{genre}'...")
@@ -71,7 +69,7 @@ def run_genre_scraping():
         
         if result:
             print_separator()
-            print(f"🎬 Знайдено фільмів: {len(result)}")
+            print(f"Знайдено фільмів: {len(result)}")
             # Виводимо перші 10 результатів
             for idx, movie in enumerate(result[:10], 1):
                 print(f"{idx}. {movie['title']} ({movie['link']})")
@@ -85,11 +83,11 @@ def run_genre_scraping():
         print(f"Критична помилка: {e}")
 
 def run_movie_details_scraping():
-    print("\n--- ДЕТАЛІ ФІЛЬМУ ---")
-    movie_name = input("️Введіть назву фільму (наприклад '1+1'): ").strip()
+    print("\n--- ДЕТАЛІ ФІЛЬМУ (HEADLESS) ---")
+    movie_name = input("Введіть назву фільму (наприклад '1+1'): ").strip()
     
     if not movie_name:
-        print("️Назва не може бути порожньою!")
+        print("[!] Назва не може бути порожньою!")
         return
 
     print(f"Шукаю деталі про '{movie_name}' (це займе час)...")
@@ -108,18 +106,47 @@ def run_movie_details_scraping():
             print_separator()
             movie = result if isinstance(result, dict) else result[0]
             
-            print(f"🎬 НАЗВА:    {movie.get('title')}")
-            print(f"📅 РІК:      {movie.get('year')}")
-            print(f"⭐ РЕЙТИНГ:  {movie.get('rating')}")
-            print(f"🌍 КРАЇНИ:   {', '.join(movie.get('countries', []))}")
-            print(f"🎭 ЖАНРИ:    {', '.join(movie.get('genres', []))}")
-            print(f"⏱️ ТРИВАЛІСТЬ: {movie.get('duration_minutes')} хв")
-            print(f"🔗 URL:      {movie.get('kinorium_url')}")
-            print(f"\n📝 ОПИС:\n{movie.get('description', '')[:200]}...")
+            print(f"НАЗВА:      {movie.get('title')}")
+            print(f"РІК:        {movie.get('year')}")
+            print(f"РЕЙТИНГ:    {movie.get('rating')}")
+            print(f"КРАЇНИ:     {', '.join(movie.get('countries', []))}")
+            print(f"ЖАНРИ:      {', '.join(movie.get('genres', []))}")
+            print(f"ТРИВАЛІСТЬ: {movie.get('duration_minutes')} хв")
+            print(f"URL:        {movie.get('kinorium_url')}")
+            print(f"\nОПИС:\n{movie.get('description', '')[:200]}...")
             print_separator()
 
     except Exception as e:
-        print(f"❌ Помилка: {e}")
+        print(f"[ERROR] Помилка: {e}")
+
+def run_ui_scraping():
+    print("\n--- ВІДКРИТТЯ В БРАУЗЕРІ (UI) ---")
+    movie_name = input("Введіть назву фільму: ").strip()
+    
+    if not movie_name:
+        print("[!] Назва не може бути порожньою!")
+        return
+
+    print(f"Шукаю посилання для '{movie_name}'...")
+    
+    try:
+        response = requests.post(f"{BASE_URL}/scrape", json={
+            "query": movie_name,
+            "mode": "ui" 
+        })
+        response.raise_for_status()
+        task_id = response.json()["task_id"]
+        
+        result = poll_task_status(task_id)
+        
+        if result:
+            print_separator()
+            print(f"[SUCCESS] Фільм відкрито у браузері.")
+            print(f"URL: {result.get('opened_url')}")
+            print_separator()
+
+    except Exception as e:
+        print(f"[ERROR] Помилка: {e}")
 
 def main():
     while True:
@@ -127,26 +154,28 @@ def main():
         print("   WEBSCRAPER CLIENT")
         print("="*30)
         print("1. Пошук фільмів за жанром (HTTP)")
-        print("2. Знайти деталі фільму за назвою(Headless)")
-        print("3. Вихід")
+        print("2. Знайти деталі фільму (Headless)")
+        print("3. Відкрити сторінку фільму (UI)")
+        print("4. Вихід")
         
-        choice = input("\n👉 Ваш вибір (1-3): ").strip()
+        choice = input("\nВаш вибір (1-4): ").strip()
         
         if choice == "1":
             run_genre_scraping()
         elif choice == "2":
             run_movie_details_scraping()
         elif choice == "3":
+            run_ui_scraping()
+        elif choice == "4":
             print("До побачення!")
             break
         else:
-            print("Невірний вибір, спробуйте ще раз.")
+            print("[!] Невірний вибір, спробуйте ще раз.")
 
 if __name__ == "__main__":
     try:
-        
         requests.get(f"{BASE_URL}/health", timeout=2)
         main()
     except requests.exceptions.ConnectionError:
-        print(f"\nПОМИЛКА: Сервер недоступний за адресою {BASE_URL}")
+        print(f"\n[FAIL] Сервер недоступний за адресою {BASE_URL}")
         print("Запустіть сервер командою: uvicorn src.main:app --reload")

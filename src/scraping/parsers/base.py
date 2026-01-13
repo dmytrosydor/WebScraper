@@ -5,6 +5,7 @@ from src.config.scraping import scraping_config
 
 logger = logging.getLogger(__name__)
 
+# Base parser class for Kinorium scrapers (headless and UI)
 class KinoriumBaseParser:
 
     async def _launch_browser(self, p: Playwright) -> Browser:

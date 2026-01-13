@@ -5,9 +5,11 @@ from src.scraping.services.scraping_service import ScrapingService
 router = APIRouter(tags=["scrape"])
 
 
+# Dependency to get the scraping service
 def get_scraping_service():
     return ScrapingService()
 
+# Endpoint to start a new scraping task
 @router.post("/scrape", response_model=ScrapeResponse)
 async def scrape_data(
     request: ScrapeRequest,
@@ -21,6 +23,7 @@ async def scrape_data(
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error starting scraping task: {str(e)}")
 
+# Endpoint to get scraping task status
 @router.get("/scrape/{task_id}", response_model=ScrapeResponse)
 async def get_scrape_status(
     task_id: str,

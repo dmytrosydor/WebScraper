@@ -1,0 +1,648 @@
+2026-01-12 16:35:20,751 - __name__ - INFO - Application started
+2026-01-12 16:35:35,619 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: 5c4a6e74-66f8-4daa-9899-7371b481de13, for query: бойовик
+2026-01-12 16:35:35,634 - src.scraping.services.scraping_service - INFO - Processing scraping task ID: 5c4a6e74-66f8-4daa-9899-7371b481de13 for query: бойовик
+2026-01-12 16:35:35,647 - src.scraping.parsers.kinorium - INFO - Starting scraping for genre 'бойовик' (ID: 3) - Page 1
+2026-01-12 16:35:36,520 - httpx - INFO - HTTP Request: GET https://ua.kinorium.com/handlers/filmList/?type=home&order=rating&page=1&perpage=50&show_viewed=1&genres%5B%5D=3 "HTTP/1.1 200 OK"
+2026-01-12 16:35:36,523 - src.scraping.parsers.kinorium - INFO - Received response status: 200
+2026-01-12 16:35:36,665 - src.scraping.parsers.kinorium - INFO - Successfully scraped 50 movies for genre 'бойовик' on page 1
+2026-01-12 16:35:36,677 - src.scraping.services.scraping_service - INFO - Task 5c4a6e74-66f8-4daa-9899-7371b481de13 completed successfully
+2026-01-12 17:37:18,336 - __name__ - INFO - Application started
+2026-01-12 17:37:30,003 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: 68d169da-e3da-4f44-bee4-103b20523b24, for query: Матриця
+2026-01-12 17:37:30,026 - src.scraping.services.scraping_service - INFO - Processing scraping task ID: 68d169da-e3da-4f44-bee4-103b20523b24 for query: Матриця
+2026-01-12 17:37:30,038 - asyncio - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-6' coro=<Connection.run() done, defined at c:\Users\sydor\Desktop\testTask\.venv\Lib\site-packages\playwright\_impl\_connection.py:305> exception=NotImplementedError()>
+Traceback (most recent call last):
+  File "c:\Users\sydor\Desktop\testTask\.venv\Lib\site-packages\playwright\_impl\_connection.py", line 312, in run
+    await self._transport.connect()
+  File "c:\Users\sydor\Desktop\testTask\.venv\Lib\site-packages\playwright\_impl\_transport.py", line 133, in connect
+    raise exc
+  File "c:\Users\sydor\Desktop\testTask\.venv\Lib\site-packages\playwright\_impl\_transport.py", line 120, in connect
+    self._proc = await asyncio.create_subprocess_exec(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\Python313\Lib\asyncio\subprocess.py", line 224, in create_subprocess_exec
+    transport, protocol = await loop.subprocess_exec(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        stderr=stderr, **kwds)
+        ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\asyncio\base_events.py", line 1802, in subprocess_exec
+    transport = await self._make_subprocess_transport(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        protocol, popen_args, False, stdin, stdout, stderr,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        bufsize, **kwargs)
+        ^^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\asyncio\base_events.py", line 539, in _make_subprocess_transport
+    raise NotImplementedError
+NotImplementedError
+2026-01-12 17:37:30,066 - src.scraping.services.scraping_service - ERROR - Task 68d169da-e3da-4f44-bee4-103b20523b24 failed with error: 
+2026-01-12 17:38:18,648 - __name__ - INFO - Application started
+2026-01-12 17:39:42,910 - __name__ - INFO - Application started
+2026-01-12 17:39:46,051 - __name__ - INFO - Application started
+2026-01-12 17:39:54,693 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: a3a345aa-fb0f-4df8-a340-67b0b5e2a30a, for query: Матриця
+2026-01-12 17:39:54,698 - src.scraping.services.scraping_service - INFO - Processing scraping task ID: a3a345aa-fb0f-4df8-a340-67b0b5e2a30a for query: Матриця
+2026-01-12 17:39:54,711 - asyncio - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-6' coro=<Connection.run() done, defined at c:\Users\sydor\Desktop\testTask\.venv\Lib\site-packages\playwright\_impl\_connection.py:305> exception=NotImplementedError()>
+Traceback (most recent call last):
+  File "c:\Users\sydor\Desktop\testTask\.venv\Lib\site-packages\playwright\_impl\_connection.py", line 312, in run
+    await self._transport.connect()
+  File "c:\Users\sydor\Desktop\testTask\.venv\Lib\site-packages\playwright\_impl\_transport.py", line 133, in connect
+    raise exc
+  File "c:\Users\sydor\Desktop\testTask\.venv\Lib\site-packages\playwright\_impl\_transport.py", line 120, in connect
+    self._proc = await asyncio.create_subprocess_exec(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\Python313\Lib\asyncio\subprocess.py", line 224, in create_subprocess_exec
+    transport, protocol = await loop.subprocess_exec(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        stderr=stderr, **kwds)
+        ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\asyncio\base_events.py", line 1802, in subprocess_exec
+    transport = await self._make_subprocess_transport(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        protocol, popen_args, False, stdin, stdout, stderr,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        bufsize, **kwargs)
+        ^^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\asyncio\base_events.py", line 539, in _make_subprocess_transport
+    raise NotImplementedError
+NotImplementedError
+2026-01-12 17:39:54,714 - src.scraping.services.scraping_service - ERROR - Task a3a345aa-fb0f-4df8-a340-67b0b5e2a30a failed with error: 
+2026-01-12 17:53:59,577 - __name__ - INFO - Application started
+2026-01-12 17:54:32,305 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: 2fa4f5ee-e3ed-4f1c-a0d2-0159b4040c85, for query: Матриця
+2026-01-12 17:54:32,324 - src.scraping.services.scraping_service - INFO - Processing scraping task ID: 2fa4f5ee-e3ed-4f1c-a0d2-0159b4040c85 for query: Матриця
+2026-01-12 17:54:32,336 - asyncio - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-10' coro=<Connection.run() done, defined at c:\Users\sydor\Desktop\testTask\.venv\Lib\site-packages\playwright\_impl\_connection.py:305> exception=NotImplementedError()>
+Traceback (most recent call last):
+  File "c:\Users\sydor\Desktop\testTask\.venv\Lib\site-packages\playwright\_impl\_connection.py", line 312, in run
+    await self._transport.connect()
+  File "c:\Users\sydor\Desktop\testTask\.venv\Lib\site-packages\playwright\_impl\_transport.py", line 133, in connect
+    raise exc
+  File "c:\Users\sydor\Desktop\testTask\.venv\Lib\site-packages\playwright\_impl\_transport.py", line 120, in connect
+    self._proc = await asyncio.create_subprocess_exec(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sydor\AppData\Local\Programs\Python\Python312\Lib\asyncio\subprocess.py", line 224, in create_subprocess_exec
+    transport, protocol = await loop.subprocess_exec(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sydor\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 1756, in subprocess_exec
+    transport = await self._make_subprocess_transport(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sydor\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 528, in _make_subprocess_transport
+    raise NotImplementedError
+NotImplementedError
+2026-01-12 17:54:32,338 - src.scraping.services.scraping_service - ERROR - Task 2fa4f5ee-e3ed-4f1c-a0d2-0159b4040c85 failed with error: 
+2026-01-12 17:55:33,783 - __name__ - INFO - Application started
+2026-01-12 17:55:37,787 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: 71370a25-2594-4dc8-961c-e4d1d8b85eb3, for query: Матриця
+2026-01-12 17:55:37,791 - src.scraping.services.scraping_service - INFO - Processing scraping task ID: 71370a25-2594-4dc8-961c-e4d1d8b85eb3 for query: Матриця
+2026-01-12 17:56:08,416 - src.scraping.services.scraping_service - ERROR - Task 71370a25-2594-4dc8-961c-e4d1d8b85eb3 failed with error: Page.wait_for_selector: Timeout 15000ms exceeded.
+Call log:
+  - waiting for locator("a.filmList__item-title") to be visible
+
+2026-01-12 18:03:21,580 - __name__ - INFO - Application started
+2026-01-12 18:03:24,712 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: 080388e4-a265-41be-944f-faec970e347d, for query: Матриця
+2026-01-12 18:03:24,716 - src.scraping.services.scraping_service - INFO - Processing scraping task ID: 080388e4-a265-41be-944f-faec970e347d for query: Матриця
+2026-01-12 18:03:24,728 - asyncio - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-6' coro=<Connection.run() done, defined at c:\Users\sydor\Desktop\testTask\.venv\Lib\site-packages\playwright\_impl\_connection.py:305> exception=NotImplementedError()>
+Traceback (most recent call last):
+  File "c:\Users\sydor\Desktop\testTask\.venv\Lib\site-packages\playwright\_impl\_connection.py", line 312, in run
+    await self._transport.connect()
+  File "c:\Users\sydor\Desktop\testTask\.venv\Lib\site-packages\playwright\_impl\_transport.py", line 133, in connect
+    raise exc
+  File "c:\Users\sydor\Desktop\testTask\.venv\Lib\site-packages\playwright\_impl\_transport.py", line 120, in connect
+    self._proc = await asyncio.create_subprocess_exec(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sydor\AppData\Local\Programs\Python\Python312\Lib\asyncio\subprocess.py", line 224, in create_subprocess_exec
+    transport, protocol = await loop.subprocess_exec(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sydor\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 1756, in subprocess_exec
+    transport = await self._make_subprocess_transport(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sydor\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 528, in _make_subprocess_transport
+    raise NotImplementedError
+NotImplementedError
+2026-01-12 18:03:24,731 - src.scraping.services.scraping_service - ERROR - Task 080388e4-a265-41be-944f-faec970e347d failed with error: 
+2026-01-12 18:03:35,874 - __name__ - INFO - Application started
+2026-01-12 18:03:38,458 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: c0e17ac2-aedc-4184-bd2d-bdaf0106b47e, for query: Матриця
+2026-01-12 18:03:38,461 - src.scraping.services.scraping_service - INFO - Processing scraping task ID: c0e17ac2-aedc-4184-bd2d-bdaf0106b47e for query: Матриця
+2026-01-12 18:04:04,079 - src.scraping.services.scraping_service - ERROR - Task c0e17ac2-aedc-4184-bd2d-bdaf0106b47e failed with error: Page.text_content: Unexpected token "" while parsing css selector "tr:has(td.legend". Did you mean to CSS.escape it?
+Call log:
+  - waiting for tr:has(td.legend >> text=тривалість) td.data
+
+2026-01-12 18:08:09,835 - __name__ - INFO - Application started
+2026-01-12 18:08:12,874 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: 8a2737dc-07a2-407f-a1bf-2a8421bfd00a, for query: Матриця
+2026-01-12 18:08:12,877 - src.scraping.services.scraping_service - INFO - Processing scraping task ID: 8a2737dc-07a2-407f-a1bf-2a8421bfd00a for query: Матриця
+2026-01-12 18:08:27,992 - src.scraping.services.scraping_service - INFO - Task 8a2737dc-07a2-407f-a1bf-2a8421bfd00a completed successfully
+2026-01-12 18:09:09,645 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: 51f27f59-2844-4f66-9b3c-167d8eb5bf56, for query: Маверік
+2026-01-12 18:09:09,648 - src.scraping.services.scraping_service - INFO - Processing scraping task ID: 51f27f59-2844-4f66-9b3c-167d8eb5bf56 for query: Маверік
+2026-01-12 18:09:24,657 - src.scraping.services.scraping_service - INFO - Task 51f27f59-2844-4f66-9b3c-167d8eb5bf56 completed successfully
+2026-01-12 18:17:02,678 - __name__ - INFO - Application started
+2026-01-12 18:17:03,175 - src.scraping.services.scraping_service - INFO - Playwright browser started
+2026-01-12 18:17:06,492 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: 19ee3877-086e-47de-9d52-c82854925354, for query: Маверік
+2026-01-12 18:17:06,496 - src.scraping.services.scraping_service - INFO - Processing scraping task ID: 19ee3877-086e-47de-9d52-c82854925354 for query: Маверік
+2026-01-12 18:17:06,508 - src.scraping.services.scraping_service - ERROR - Task 19ee3877-086e-47de-9d52-c82854925354 failed with error: Browser not started
+2026-01-12 18:20:26,802 - __name__ - INFO - Application started
+2026-01-12 18:20:27,203 - src.scraping.services.scraping_service - INFO - Playwright browser started
+2026-01-12 18:20:32,040 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: 6bb9c1e9-eb84-40e5-a69a-189e12eb5ada, for query: Маверік
+2026-01-12 18:20:32,045 - asyncio - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-10' coro=<ScrapingService._process_scraping() done, defined at C:\Users\sydor\Desktop\testTask\src\scraping\services\scraping_service.py:61> exception=AttributeError("'ScrapingService' object has no attribute 'ready'")>
+Traceback (most recent call last):
+  File "C:\Users\sydor\Desktop\testTask\src\scraping\services\scraping_service.py", line 62, in _process_scraping
+    await self.wait_ready()  # чекаємо поки браузер стартує
+    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sydor\Desktop\testTask\src\scraping\services\scraping_service.py", line 25, in wait_ready
+    while not self.ready:
+              ^^^^^^^^^^
+AttributeError: 'ScrapingService' object has no attribute 'ready'
+2026-01-12 18:21:05,978 - __name__ - INFO - Application started
+2026-01-12 18:21:06,371 - src.scraping.services.scraping_service - INFO - Playwright browser started
+2026-01-12 18:21:10,055 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: 25fe2926-31d9-4492-b6e3-9115a078954b, for query: Маверік
+2026-01-12 18:23:37,662 - __name__ - INFO - Application started
+2026-01-12 18:23:40,581 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: abcc6dfc-c467-4eb8-81e6-48359a34e254, for query: Маверік
+2026-01-12 18:23:40,584 - src.scraping.services.scraping_service - INFO - Processing scraping task ID: abcc6dfc-c467-4eb8-81e6-48359a34e254 for query: Маверік
+2026-01-12 18:23:55,329 - src.scraping.services.scraping_service - INFO - Task abcc6dfc-c467-4eb8-81e6-48359a34e254 completed successfully
+2026-01-12 19:55:50,554 - __name__ - INFO - Application started
+2026-01-12 19:56:00,693 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: 88744d2f-5c87-4248-8914-82da53a7bc43, for query: 1+1
+2026-01-12 19:56:00,697 - src.scraping.services.scraping_service - INFO - Processing scraping task ID: 88744d2f-5c87-4248-8914-82da53a7bc43 for query: 1+1
+2026-01-12 19:56:49,750 - src.scraping.services.scraping_service - ERROR - Task 88744d2f-5c87-4248-8914-82da53a7bc43 failed with error: Page.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.film-page__title-rating")
+
+2026-01-12 20:04:02,709 - __name__ - INFO - Application started
+2026-01-12 20:04:04,324 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: 61922759-00e0-44de-b751-d89da2862273, for query: 1+1
+2026-01-12 20:04:04,328 - src.scraping.services.scraping_service - INFO - Processing scraping task ID: 61922759-00e0-44de-b751-d89da2862273 for query: 1+1
+2026-01-12 20:04:36,305 - src.scraping.services.scraping_service - ERROR - Task 61922759-00e0-44de-b751-d89da2862273 failed with error: Page.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.film-page__title-rating")
+
+2026-01-12 20:05:02,435 - __name__ - INFO - Application started
+2026-01-12 20:05:05,002 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: 281a0365-1e13-45ab-afb7-9e62bda61265, for query: 1+1
+2026-01-12 20:05:05,006 - src.scraping.services.scraping_service - INFO - Processing scraping task ID: 281a0365-1e13-45ab-afb7-9e62bda61265 for query: 1+1
+2026-01-12 20:05:41,153 - src.scraping.services.scraping_service - ERROR - Task 281a0365-1e13-45ab-afb7-9e62bda61265 failed with error: Page.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.film-page__title-rating.green")
+
+2026-01-12 20:09:50,668 - __name__ - INFO - Application started
+2026-01-12 20:09:54,219 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: 83035a35-cc6d-4e58-b106-428af3579716, for query: 1+1
+2026-01-12 20:09:54,224 - src.scraping.services.scraping_service - INFO - Processing scraping task ID: 83035a35-cc6d-4e58-b106-428af3579716 for query: 1+1
+2026-01-12 20:10:35,375 - src.scraping.services.scraping_service - ERROR - Task 83035a35-cc6d-4e58-b106-428af3579716 failed with error: Locator.wait_for: Timeout 15000ms exceeded.
+Call log:
+  - waiting for locator("div.film-page__title-rating").first to be visible
+
+2026-01-12 20:12:14,594 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: ae937469-89cc-4dd3-aeba-0f914a41fcd4, for query: маврік
+2026-01-12 20:12:14,596 - src.scraping.services.scraping_service - INFO - Processing scraping task ID: ae937469-89cc-4dd3-aeba-0f914a41fcd4 for query: маврік
+2026-01-12 20:12:54,790 - src.scraping.services.scraping_service - ERROR - Task ae937469-89cc-4dd3-aeba-0f914a41fcd4 failed with error: Page.get_attribute: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.carousel_image-handler img")
+
+2026-01-12 20:13:29,780 - __name__ - INFO - Application started
+2026-01-12 20:13:32,664 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: 32d0793c-aecc-4b3a-a826-4a3dc70cc347, for query: маврік
+2026-01-12 20:13:32,668 - src.scraping.services.scraping_service - INFO - Processing scraping task ID: 32d0793c-aecc-4b3a-a826-4a3dc70cc347 for query: маврік
+2026-01-12 20:14:12,111 - src.scraping.services.scraping_service - ERROR - Task 32d0793c-aecc-4b3a-a826-4a3dc70cc347 failed with error: Page.get_attribute: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.carousel_image-handler img")
+
+2026-01-12 20:14:18,294 - __name__ - INFO - Application started
+2026-01-12 20:14:20,501 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: 4be379e0-fde5-44de-a25d-cb90d0aa9df4, for query: Матриця
+2026-01-12 20:14:20,505 - src.scraping.services.scraping_service - INFO - Processing scraping task ID: 4be379e0-fde5-44de-a25d-cb90d0aa9df4 for query: Матриця
+2026-01-12 20:14:37,806 - src.scraping.services.scraping_service - INFO - Task 4be379e0-fde5-44de-a25d-cb90d0aa9df4 completed successfully
+2026-01-12 20:14:49,654 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: 1f9a39cd-4244-44a4-9315-3de6f97fb2e5, for query: Маверік
+2026-01-12 20:14:49,656 - src.scraping.services.scraping_service - INFO - Processing scraping task ID: 1f9a39cd-4244-44a4-9315-3de6f97fb2e5 for query: Маверік
+2026-01-12 20:15:05,015 - src.scraping.services.scraping_service - INFO - Task 1f9a39cd-4244-44a4-9315-3de6f97fb2e5 completed successfully
+2026-01-12 20:15:17,065 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: 949c8c87-e419-4ab6-9dc4-8d7dee78c942, for query: 1+1
+2026-01-12 20:15:17,067 - src.scraping.services.scraping_service - INFO - Processing scraping task ID: 949c8c87-e419-4ab6-9dc4-8d7dee78c942 for query: 1+1
+2026-01-12 20:16:13,125 - src.scraping.services.scraping_service - ERROR - Task 949c8c87-e419-4ab6-9dc4-8d7dee78c942 failed with error: Page.text_content: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.film-page__title-rating")
+
+2026-01-12 20:30:19,197 - __name__ - INFO - Application started
+2026-01-12 20:30:22,294 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: 456c6ce9-dd52-4b11-a661-57db4323aa3c, for query: 1+1
+2026-01-12 20:30:22,298 - src.scraping.services.scraping_service - INFO - Processing scraping task ID: 456c6ce9-dd52-4b11-a661-57db4323aa3c for query: 1+1
+2026-01-12 20:30:53,613 - src.scraping.parsers.kinorium - WARNING - Rating block not found for movie: 1:1
+2026-01-12 20:31:23,736 - src.scraping.services.scraping_service - ERROR - Task 456c6ce9-dd52-4b11-a661-57db4323aa3c failed with error: Page.get_attribute: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.carousel_image-handler img")
+
+2026-01-12 20:31:37,829 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: 01c65e6e-9925-47f3-b026-814027eb2e50, for query: 1 + 1
+2026-01-12 20:31:37,831 - src.scraping.services.scraping_service - INFO - Processing scraping task ID: 01c65e6e-9925-47f3-b026-814027eb2e50 for query: 1 + 1
+2026-01-12 20:31:53,933 - src.scraping.parsers.kinorium - WARNING - Rating block not found for movie: 1:1
+2026-01-12 20:32:24,058 - src.scraping.services.scraping_service - ERROR - Task 01c65e6e-9925-47f3-b026-814027eb2e50 failed with error: Page.get_attribute: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.carousel_image-handler img")
+
+2026-01-12 20:32:52,627 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: fd6dc036-5b58-4a8d-93b4-4961e33a2894, for query: Intouchables
+2026-01-12 20:32:52,629 - src.scraping.services.scraping_service - INFO - Processing scraping task ID: fd6dc036-5b58-4a8d-93b4-4961e33a2894 for query: Intouchables
+2026-01-12 20:33:19,019 - src.scraping.services.scraping_service - INFO - Task fd6dc036-5b58-4a8d-93b4-4961e33a2894 completed successfully
+2026-01-12 20:35:32,523 - __name__ - INFO - Application started
+2026-01-12 20:35:53,118 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: 78f5e48a-131a-4d1b-a361-ddf57a3a9481, for query: 1+1
+2026-01-12 20:35:53,122 - src.scraping.services.scraping_service - INFO - Processing scraping task ID: 78f5e48a-131a-4d1b-a361-ddf57a3a9481 for query: 1+1
+2026-01-12 20:36:07,235 - src.scraping.services.scraping_service - INFO - Task 78f5e48a-131a-4d1b-a361-ddf57a3a9481 completed successfully
+2026-01-12 20:44:52,610 - __name__ - INFO - Application started
+2026-01-12 20:46:40,502 - __name__ - INFO - Application started
+2026-01-12 20:46:42,438 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: cd44bd4a-05ae-473b-915e-d2708b8f3ddc, for query: 1+1
+2026-01-12 20:46:42,442 - src.utils.decorators - INFO - Task cd44bd4a-05ae-473b-915e-d2708b8f3ddc: Started processing query='1+1'
+2026-01-12 20:46:42,947 - src.scraping.parsers.kinorium - INFO - Searching for movie: 1+1 using URL: https://ua.kinorium.com/search/?q=1%2B1
+2026-01-12 20:47:00,545 - src.utils.decorators - INFO - Task cd44bd4a-05ae-473b-915e-d2708b8f3ddc: Completed successfully
+2026-01-12 20:57:36,726 - __name__ - INFO - Application started
+2026-01-12 20:57:42,196 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: c8ac9b0d-83ed-44d2-8ddf-43b1f7e220e2, for query: 1+1
+2026-01-12 20:57:42,199 - src.utils.decorators - INFO - Task c8ac9b0d-83ed-44d2-8ddf-43b1f7e220e2: Started processing query='1+1'
+2026-01-12 20:57:42,741 - src.scraping.parsers.kinorium - INFO - Searching for movie: 1+1 using URL: https://ua.kinorium.com/search/?q=1%2B1
+2026-01-12 20:58:00,173 - src.utils.decorators - INFO - Task c8ac9b0d-83ed-44d2-8ddf-43b1f7e220e2: Completed successfully
+2026-01-12 21:00:17,947 - __name__ - INFO - Application started
+2026-01-12 21:00:24,949 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: 21630eef-13f8-41f9-b890-049296424f0f, for query: 1+1
+2026-01-12 21:00:24,954 - src.utils.decorators - INFO - Task 21630eef-13f8-41f9-b890-049296424f0f: Started processing query='1+1'
+2026-01-12 21:00:25,505 - src.scraping.parsers.kinorium - INFO - Searching for movie: 1+1 using URL: https://ua.kinorium.com/search/?q=1%2B1
+2026-01-12 21:00:32,875 - src.utils.decorators - INFO - Task 21630eef-13f8-41f9-b890-049296424f0f: Completed successfully
+2026-01-12 21:00:43,345 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: 3e422cd1-7c42-4aef-b4c4-b90bd0ef2c03, for query: 1+1
+2026-01-12 21:00:43,347 - src.utils.decorators - INFO - Task 3e422cd1-7c42-4aef-b4c4-b90bd0ef2c03: Started processing query='1+1'
+2026-01-12 21:00:43,884 - src.scraping.parsers.kinorium - INFO - Searching for movie: 1+1 using URL: https://ua.kinorium.com/search/?q=1%2B1
+2026-01-12 21:00:58,159 - src.utils.decorators - INFO - Task 3e422cd1-7c42-4aef-b4c4-b90bd0ef2c03: Completed successfully
+2026-01-12 21:08:34,040 - __name__ - INFO - Application started
+2026-01-12 21:08:37,518 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: 7eb84a10-dacf-487a-b0ee-413015b57acf, for query: 1+1
+2026-01-12 21:08:37,522 - src.utils.decorators - INFO - Task 7eb84a10-dacf-487a-b0ee-413015b57acf: Started processing query='1+1'
+2026-01-12 21:08:38,044 - src.scraping.parsers.kinorium - INFO - Searching for movie: 1+1 using URL: https://ua.kinorium.com/search/?q=1%2B1
+2026-01-12 21:08:44,854 - src.utils.decorators - INFO - Task 7eb84a10-dacf-487a-b0ee-413015b57acf: Completed successfully
+2026-01-12 21:13:34,839 - __name__ - INFO - Application started
+2026-01-12 21:13:47,680 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: d96e27a2-3ae2-4103-a81f-53f9f05a4225, for query: 1+1
+2026-01-12 21:13:47,683 - src.utils.decorators - INFO - Task d96e27a2-3ae2-4103-a81f-53f9f05a4225: Started processing query='1+1'
+2026-01-12 21:13:48,158 - src.scraping.parsers.kinorium - INFO - Searching for movie: 1+1 using URL: https://ua.kinorium.com/search/?q=1%2B1
+2026-01-12 21:14:13,031 - src.utils.decorators - INFO - Task d96e27a2-3ae2-4103-a81f-53f9f05a4225: Completed successfully
+2026-01-12 21:16:30,298 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: 59facce8-f0f5-451a-bee3-9dd2b2b22a4c, for query: бойовик
+2026-01-12 21:16:30,300 - src.utils.decorators - INFO - Task 59facce8-f0f5-451a-bee3-9dd2b2b22a4c: Started processing query='бойовик'
+2026-01-12 21:16:30,311 - src.scraping.parsers.kinorium - INFO - Starting scraping for genre 'бойовик' (ID: 3) - Page 1
+2026-01-12 21:16:31,013 - httpx - INFO - HTTP Request: GET https://ua.kinorium.com/handlers/filmList/?type=home&order=rating&page=1&perpage=50&show_viewed=1&genres%5B%5D=3 "HTTP/1.1 200 OK"
+2026-01-12 21:16:31,015 - src.scraping.parsers.kinorium - INFO - Received response status: 200
+2026-01-12 21:16:31,144 - src.scraping.parsers.kinorium - INFO - Successfully scraped 50 movies for genre 'бойовик' on page 1
+2026-01-12 21:16:31,155 - src.utils.decorators - INFO - Task 59facce8-f0f5-451a-bee3-9dd2b2b22a4c: Completed successfully
+2026-01-12 21:16:53,186 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: f96b9796-8888-436a-964d-0cd4697cfb73, for query: Інтерстеллер
+2026-01-12 21:16:53,187 - src.utils.decorators - INFO - Task f96b9796-8888-436a-964d-0cd4697cfb73: Started processing query='Інтерстеллер'
+2026-01-12 21:16:53,642 - src.scraping.parsers.kinorium - INFO - Searching for movie: Інтерстеллер using URL: https://ua.kinorium.com/search/?q=%D0%86%D0%BD%D1%82%D0%B5%D1%80%D1%81%D1%82%D0%B5%D0%BB%D0%BB%D0%B5%D1%80
+2026-01-12 21:17:08,108 - src.utils.decorators - INFO - Task f96b9796-8888-436a-964d-0cd4697cfb73: Completed successfully
+2026-01-12 21:18:27,895 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: 2ec01cb4-473a-4fd4-a964-eb80d2a0af6b, for query: Побіг з шоушенка
+2026-01-12 21:18:27,897 - src.utils.decorators - INFO - Task 2ec01cb4-473a-4fd4-a964-eb80d2a0af6b: Started processing query='Побіг з шоушенка'
+2026-01-12 21:18:28,352 - src.scraping.parsers.kinorium - INFO - Searching for movie: Побіг з шоушенка using URL: https://ua.kinorium.com/search/?q=%D0%9F%D0%BE%D0%B1%D1%96%D0%B3%20%D0%B7%20%D1%88%D0%BE%D1%83%D1%88%D0%B5%D0%BD%D0%BA%D0%B0
+2026-01-12 21:19:16,043 - src.utils.decorators - ERROR - Task 2ec01cb4-473a-4fd4-a964-eb80d2a0af6b: CRITICAL FAILURE
+Traceback (most recent call last):
+  File "C:\Users\sydor\Desktop\testTask\src\utils\decorators.py", line 24, in wrapper
+    result = await func(self, task_id, request, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sydor\Desktop\testTask\src\scraping\services\scraping_service.py", line 60, in _process_scraping
+    return await self.parser.scrape_movie_details(request.query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sydor\Desktop\testTask\src\scraping\parsers\kinorium.py", line 216, in scrape_movie_details
+    poster_url = await page.get_attribute(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\sydor\Desktop\testTask\.venv\Lib\site-packages\playwright\async_api\_generated.py", line 10859, in get_attribute
+    await self._impl_obj.get_attribute(
+  File "c:\Users\sydor\Desktop\testTask\.venv\Lib\site-packages\playwright\_impl\_page.py", line 991, in get_attribute
+    return await self._main_frame.get_attribute(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\sydor\Desktop\testTask\.venv\Lib\site-packages\playwright\_impl\_frame.py", line 726, in get_attribute
+    return await self._channel.send(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\sydor\Desktop\testTask\.venv\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\sydor\Desktop\testTask\.venv\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Page.get_attribute: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div.carousel_image-handler img")
+
+2026-01-12 21:20:09,359 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: 17945fb6-93d6-437e-9ca8-69e28e4adcf1, for query: маверік
+2026-01-12 21:20:09,362 - src.utils.decorators - INFO - Task 17945fb6-93d6-437e-9ca8-69e28e4adcf1: Started processing query='маверік'
+2026-01-12 21:20:09,813 - src.scraping.parsers.kinorium - INFO - Searching for movie: маверік using URL: https://ua.kinorium.com/search/?q=%D0%BC%D0%B0%D0%B2%D0%B5%D1%80%D1%96%D0%BA
+2026-01-12 21:20:36,233 - src.utils.decorators - INFO - Task 17945fb6-93d6-437e-9ca8-69e28e4adcf1: Completed successfully
+2026-01-12 21:21:40,300 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: ad554cfd-3ba1-46b1-ba6b-9c2ad231f20c, for query: матриц
+2026-01-12 21:21:40,302 - src.utils.decorators - INFO - Task ad554cfd-3ba1-46b1-ba6b-9c2ad231f20c: Started processing query='матриц'
+2026-01-12 21:21:40,762 - src.scraping.parsers.kinorium - INFO - Searching for movie: матриц using URL: https://ua.kinorium.com/search/?q=%D0%BC%D0%B0%D1%82%D1%80%D0%B8%D1%86
+2026-01-12 21:21:57,744 - src.utils.decorators - INFO - Task ad554cfd-3ba1-46b1-ba6b-9c2ad231f20c: Completed successfully
+2026-01-12 21:29:27,450 - __name__ - INFO - Application started
+2026-01-12 21:29:38,025 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: 4fb95f89-17b2-4750-a83c-81d2b671c94f, for query: Матица
+2026-01-12 21:29:38,028 - src.utils.decorators - INFO - Task 4fb95f89-17b2-4750-a83c-81d2b671c94f: Started processing query='Матица'
+2026-01-12 21:29:38,513 - src.scraping.parsers.kinorium - INFO - Searching for movie: Матица using URL: https://ua.kinorium.com/search/?q=%D0%9C%D0%B0%D1%82%D0%B8%D1%86%D0%B0
+2026-01-12 21:29:53,936 - src.utils.decorators - INFO - Task 4fb95f89-17b2-4750-a83c-81d2b671c94f: Completed successfully
+2026-01-12 21:37:57,416 - __name__ - INFO - Application started
+2026-01-12 21:38:05,966 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: headless_237b1fc9-ee03-48c0-a8bd-2d41e3a55415, for query: 1+1
+2026-01-12 21:38:05,969 - src.utils.decorators - INFO - Task headless_237b1fc9-ee03-48c0-a8bd-2d41e3a55415: Started processing query='1+1'
+2026-01-12 21:38:06,440 - src.scraping.parsers.kinorium - INFO - Searching for movie: 1+1 using URL: https://ua.kinorium.com/search/?q=1%2B1
+2026-01-12 21:38:32,058 - src.utils.decorators - INFO - Task headless_237b1fc9-ee03-48c0-a8bd-2d41e3a55415: Completed successfully
+2026-01-12 21:44:32,820 - __name__ - INFO - Application started
+2026-01-12 21:44:44,178 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: headless_351c5971-134c-460b-ac7a-67ca2b98bb06, for query: 1+1
+2026-01-12 21:44:44,181 - src.utils.decorators - INFO - Task headless_351c5971-134c-460b-ac7a-67ca2b98bb06: Started processing query='1+1'
+2026-01-12 21:44:44,651 - src.scraping.parsers.kinorium - INFO - Searching for movie: 1+1 using URL: https://ua.kinorium.com/search/?q=1%2B1
+2026-01-12 21:44:45,941 - src.utils.decorators - INFO - Task headless_351c5971-134c-460b-ac7a-67ca2b98bb06: Completed successfully
+2026-01-12 21:46:10,126 - __name__ - INFO - Application started
+2026-01-12 21:46:14,287 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: headless_7fb40aad-5c14-4748-843b-a1d08e8a9fb0, for query: 1+1
+2026-01-12 21:46:14,291 - src.utils.decorators - INFO - Task headless_7fb40aad-5c14-4748-843b-a1d08e8a9fb0: Started processing query='1+1'
+2026-01-12 21:46:14,745 - src.scraping.parsers.kinorium - INFO - Searching for movie: 1+1 using URL: https://ua.kinorium.com/search/?q=1%2B1
+2026-01-12 21:46:27,336 - src.utils.decorators - INFO - Task headless_7fb40aad-5c14-4748-843b-a1d08e8a9fb0: Completed successfully
+2026-01-12 21:48:06,115 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: headless_441282af-87fe-4f2b-9899-ee24046ce788, for query: маверік
+2026-01-12 21:48:06,118 - src.utils.decorators - INFO - Task headless_441282af-87fe-4f2b-9899-ee24046ce788: Started processing query='маверік'
+2026-01-12 21:48:06,569 - src.scraping.parsers.kinorium - INFO - Searching for movie: маверік using URL: https://ua.kinorium.com/search/?q=%D0%BC%D0%B0%D0%B2%D0%B5%D1%80%D1%96%D0%BA
+2026-01-12 21:48:18,792 - src.utils.decorators - INFO - Task headless_441282af-87fe-4f2b-9899-ee24046ce788: Completed successfully
+2026-01-12 21:49:31,277 - __name__ - INFO - Application started
+2026-01-12 21:51:00,335 - __name__ - INFO - Application started
+2026-01-12 21:51:05,419 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: headless_e4796a86-e60c-4e87-a80a-7f68cc79f3da, for query: 1+1
+2026-01-12 21:51:05,422 - src.utils.decorators - INFO - Task headless_e4796a86-e60c-4e87-a80a-7f68cc79f3da: Started processing query='1+1'
+2026-01-12 21:51:05,905 - src.scraping.parsers.kinorium - INFO - Searching for movie: 1+1 using URL: https://ua.kinorium.com/search/?q=1%2B1
+2026-01-12 21:51:07,436 - src.utils.decorators - INFO - Task headless_e4796a86-e60c-4e87-a80a-7f68cc79f3da: Completed successfully
+2026-01-12 21:51:36,111 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: headless_f2f1c9d7-2463-4ef5-b89f-7433cf65002c, for query: маверік
+2026-01-12 21:51:36,113 - src.utils.decorators - INFO - Task headless_f2f1c9d7-2463-4ef5-b89f-7433cf65002c: Started processing query='маверік'
+2026-01-12 21:51:36,612 - src.scraping.parsers.kinorium - INFO - Searching for movie: маверік using URL: https://ua.kinorium.com/search/?q=%D0%BC%D0%B0%D0%B2%D0%B5%D1%80%D1%96%D0%BA
+2026-01-12 21:51:38,085 - src.utils.decorators - INFO - Task headless_f2f1c9d7-2463-4ef5-b89f-7433cf65002c: Completed successfully
+2026-01-12 21:51:43,631 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: http_67c505e6-c12a-468d-871f-94f135152dd8, for query: аніме
+2026-01-12 21:51:43,633 - src.utils.decorators - INFO - Task http_67c505e6-c12a-468d-871f-94f135152dd8: Started processing query='аніме'
+2026-01-12 21:51:43,644 - src.scraping.parsers.kinorium - INFO - Starting scraping for genre 'аніме' (ID: 1) - Page 1
+2026-01-12 21:51:44,164 - httpx - INFO - HTTP Request: GET https://ua.kinorium.com/handlers/filmList/?type=home&order=rating&page=1&perpage=50&show_viewed=1&genres%5B%5D=1 "HTTP/1.1 200 OK"
+2026-01-12 21:51:44,165 - src.scraping.parsers.kinorium - INFO - Received response status: 200
+2026-01-12 21:51:44,179 - src.scraping.parsers.kinorium - INFO - Successfully scraped 6 movies for genre 'аніме' on page 1
+2026-01-12 21:51:44,190 - src.utils.decorators - INFO - Task http_67c505e6-c12a-468d-871f-94f135152dd8: Completed successfully
+2026-01-12 21:53:22,368 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: headless_34efb2b1-b652-4c9e-a656-96a39779415d, for query: май
+2026-01-12 21:53:22,370 - src.utils.decorators - INFO - Task headless_34efb2b1-b652-4c9e-a656-96a39779415d: Started processing query='май'
+2026-01-12 21:53:23,706 - src.scraping.parsers.kinorium - INFO - Searching for movie: май using URL: https://ua.kinorium.com/search/?q=%D0%BC%D0%B0%D0%B9
+2026-01-12 21:53:32,905 - src.utils.decorators - INFO - Task headless_34efb2b1-b652-4c9e-a656-96a39779415d: Completed successfully
+2026-01-12 21:54:56,596 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: http_2868559d-adf6-4bf6-9124-4a7735572fb8, for query: бойовик
+2026-01-12 21:54:56,597 - src.utils.decorators - INFO - Task http_2868559d-adf6-4bf6-9124-4a7735572fb8: Started processing query='бойовик'
+2026-01-12 21:54:56,607 - src.scraping.parsers.kinorium - INFO - Starting scraping for genre 'бойовик' (ID: 3) - Page 1
+2026-01-12 21:54:57,095 - httpx - INFO - HTTP Request: GET https://ua.kinorium.com/handlers/filmList/?type=home&order=rating&page=1&perpage=50&show_viewed=1&genres%5B%5D=3 "HTTP/1.1 200 OK"
+2026-01-12 21:54:57,097 - src.scraping.parsers.kinorium - INFO - Received response status: 200
+2026-01-12 21:54:57,221 - src.scraping.parsers.kinorium - INFO - Successfully scraped 50 movies for genre 'бойовик' on page 1
+2026-01-12 21:54:57,235 - src.utils.decorators - INFO - Task http_2868559d-adf6-4bf6-9124-4a7735572fb8: Completed successfully
+2026-01-13 16:10:15,132 - __name__ - INFO - Application started
+2026-01-13 16:10:47,556 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: ui_6259485b-17fc-4f0f-b971-a6d7cdb52013, for query: Маверік
+2026-01-13 16:10:47,561 - src.utils.decorators - INFO - Task ui_6259485b-17fc-4f0f-b971-a6d7cdb52013: Started processing query='Маверік'
+2026-01-13 16:10:47,573 - src.scraping.parsers.ui_parser - INFO - Starting UI mode for movie: Маверік
+2026-01-13 16:10:54,794 - src.scraping.parsers.ui_parser - INFO - Navigating to search page: https://ua.kinorium.com/search/?q=%D0%9C%D0%B0%D0%B2%D0%B5%D1%80%D1%96%D0%BA
+2026-01-13 16:11:11,780 - src.scraping.parsers.ui_parser - INFO - Opening movie page: https://ua.kinorium.com/100576/
+2026-01-13 16:11:12,628 - src.scraping.parsers.ui_parser - INFO - Browser is open. Waiting 30 seconds before closing...
+2026-01-13 16:11:12,943 - src.utils.decorators - ERROR - Task ui_6259485b-17fc-4f0f-b971-a6d7cdb52013: CRITICAL FAILURE
+Traceback (most recent call last):
+  File "C:\Users\sydor\Desktop\testTask\src\utils\decorators.py", line 24, in wrapper
+    result = await func(self, task_id, request, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sydor\Desktop\testTask\src\scraping\services\scraping_service.py", line 67, in _process_scraping
+    return await parser.parse(request.query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sydor\Desktop\testTask\src\scraping\parsers\ui_parser.py", line 56, in parse
+    await asyncio.sleep(30)
+          ^^^^^^^
+NameError: name 'asyncio' is not defined. Did you forget to import 'asyncio'
+2026-01-13 16:13:21,488 - __name__ - INFO - Application started
+2026-01-13 16:13:23,224 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: ui_f8e42ccf-ad55-4e99-a481-fa01f9a8ce0b, for query: Маверік
+2026-01-13 16:13:23,229 - src.utils.decorators - INFO - Task ui_f8e42ccf-ad55-4e99-a481-fa01f9a8ce0b: Started processing query='Маверік'
+2026-01-13 16:13:23,244 - src.scraping.parsers.ui_parser - INFO - Starting UI mode for movie: Маверік
+2026-01-13 16:13:23,978 - src.scraping.parsers.ui_parser - INFO - Navigating to search page: https://ua.kinorium.com/search/?q=%D0%9C%D0%B0%D0%B2%D0%B5%D1%80%D1%96%D0%BA
+2026-01-13 16:13:24,531 - src.scraping.parsers.ui_parser - INFO - Opening movie page: https://ua.kinorium.com/100576/
+2026-01-13 16:13:25,143 - src.scraping.parsers.ui_parser - INFO - Browser is open. Waiting 30 seconds...
+2026-01-13 16:13:34,847 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: ui_d8d49029-2c1f-4ff6-8519-2cb7d30fa3f0, for query: Маверік
+2026-01-13 16:13:34,849 - src.utils.decorators - INFO - Task ui_d8d49029-2c1f-4ff6-8519-2cb7d30fa3f0: Started processing query='Маверік'
+2026-01-13 16:13:34,867 - src.scraping.parsers.ui_parser - INFO - Starting UI mode for movie: Маверік
+2026-01-13 16:13:35,621 - src.scraping.parsers.ui_parser - INFO - Navigating to search page: https://ua.kinorium.com/search/?q=%D0%9C%D0%B0%D0%B2%D0%B5%D1%80%D1%96%D0%BA
+2026-01-13 16:13:36,205 - src.scraping.parsers.ui_parser - INFO - Opening movie page: https://ua.kinorium.com/100576/
+2026-01-13 16:13:36,804 - src.scraping.parsers.ui_parser - INFO - Browser is open. Waiting 30 seconds...
+2026-01-13 16:13:46,071 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: ui_27f1d16c-59b5-48ff-9786-ddc5c6cebefe, for query: Маверік
+2026-01-13 16:13:46,072 - src.utils.decorators - INFO - Task ui_27f1d16c-59b5-48ff-9786-ddc5c6cebefe: Started processing query='Маверік'
+2026-01-13 16:13:46,083 - src.scraping.parsers.ui_parser - INFO - Starting UI mode for movie: Маверік
+2026-01-13 16:13:46,848 - src.scraping.parsers.ui_parser - INFO - Navigating to search page: https://ua.kinorium.com/search/?q=%D0%9C%D0%B0%D0%B2%D0%B5%D1%80%D1%96%D0%BA
+2026-01-13 16:13:47,432 - src.scraping.parsers.ui_parser - INFO - Opening movie page: https://ua.kinorium.com/100576/
+2026-01-13 16:13:47,949 - src.scraping.parsers.ui_parser - INFO - Browser is open. Waiting 30 seconds...
+2026-01-13 16:13:55,317 - src.utils.decorators - INFO - Task ui_f8e42ccf-ad55-4e99-a481-fa01f9a8ce0b: Completed successfully
+2026-01-13 16:14:06,959 - src.utils.decorators - INFO - Task ui_d8d49029-2c1f-4ff6-8519-2cb7d30fa3f0: Completed successfully
+2026-01-13 16:14:18,139 - src.utils.decorators - INFO - Task ui_27f1d16c-59b5-48ff-9786-ddc5c6cebefe: Completed successfully
+2026-01-13 16:15:27,124 - __name__ - INFO - Application started
+2026-01-13 16:15:28,595 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: ui_45e006ee-6d7e-4fe8-9a42-fdd47218c6c3, for query: Маверік
+2026-01-13 16:15:28,598 - src.utils.decorators - INFO - Task ui_45e006ee-6d7e-4fe8-9a42-fdd47218c6c3: Started processing query='Маверік'
+2026-01-13 16:15:28,609 - src.scraping.parsers.ui_parser - INFO - Starting UI mode for movie: Маверік
+2026-01-13 16:15:29,342 - src.scraping.parsers.ui_parser - INFO - Opening search page: https://ua.kinorium.com/search/?q=%D0%9C%D0%B0%D0%B2%D0%B5%D1%80%D1%96%D0%BA
+2026-01-13 16:15:29,979 - src.scraping.parsers.ui_parser - INFO - Opening movie page: https://ua.kinorium.com/100576/
+2026-01-13 16:15:30,593 - src.scraping.parsers.ui_parser - INFO - Browser opened normally. Waiting 30 seconds...
+2026-01-13 16:15:41,924 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: ui_5e23fdca-f7dc-44fc-91a5-05adbd8fdc39, for query: Маверік
+2026-01-13 16:15:41,926 - src.utils.decorators - INFO - Task ui_5e23fdca-f7dc-44fc-91a5-05adbd8fdc39: Started processing query='Маверік'
+2026-01-13 16:15:41,936 - src.scraping.parsers.ui_parser - INFO - Starting UI mode for movie: Маверік
+2026-01-13 16:15:42,685 - src.scraping.parsers.ui_parser - INFO - Opening search page: https://ua.kinorium.com/search/?q=%D0%9C%D0%B0%D0%B2%D0%B5%D1%80%D1%96%D0%BA
+2026-01-13 16:15:43,166 - src.scraping.parsers.ui_parser - INFO - Opening movie page: https://ua.kinorium.com/100576/
+2026-01-13 16:15:43,903 - src.scraping.parsers.ui_parser - INFO - Browser opened normally. Waiting 30 seconds...
+2026-01-13 16:16:00,623 - src.utils.decorators - INFO - Task ui_45e006ee-6d7e-4fe8-9a42-fdd47218c6c3: Completed successfully
+2026-01-13 16:16:13,927 - src.utils.decorators - INFO - Task ui_5e23fdca-f7dc-44fc-91a5-05adbd8fdc39: Completed successfully
+2026-01-13 16:16:41,665 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: ui_95700017-6f59-4643-8af9-295e796e18c9, for query: Маверік
+2026-01-13 16:16:41,668 - src.utils.decorators - INFO - Task ui_95700017-6f59-4643-8af9-295e796e18c9: Started processing query='Маверік'
+2026-01-13 16:16:41,681 - src.scraping.parsers.ui_parser - INFO - Starting UI mode for movie: Маверік
+2026-01-13 16:16:42,387 - src.scraping.parsers.ui_parser - INFO - Opening search page: https://ua.kinorium.com/search/?q=%D0%9C%D0%B0%D0%B2%D0%B5%D1%80%D1%96%D0%BA
+2026-01-13 16:16:42,855 - src.scraping.parsers.ui_parser - INFO - Opening movie page: https://ua.kinorium.com/100576/
+2026-01-13 16:16:43,397 - src.scraping.parsers.ui_parser - INFO - Browser opened normally. Waiting 30 seconds...
+2026-01-13 16:17:13,593 - src.utils.decorators - INFO - Task ui_95700017-6f59-4643-8af9-295e796e18c9: Completed successfully
+2026-01-13 16:19:10,181 - __name__ - INFO - Application started
+2026-01-13 16:19:12,114 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: ui_92b092a1-9677-4f16-8222-c8b5cf94a882, for query: Маверік
+2026-01-13 16:19:12,117 - src.utils.decorators - INFO - Task ui_92b092a1-9677-4f16-8222-c8b5cf94a882: Started processing query='Маверік'
+2026-01-13 16:19:12,128 - src.scraping.parsers.ui_parser - INFO - Starting UI mode for movie: Маверік
+2026-01-13 16:19:12,826 - src.scraping.parsers.ui_parser - INFO - Opening search page: https://ua.kinorium.com/search/?q=%D0%9C%D0%B0%D0%B2%D0%B5%D1%80%D1%96%D0%BA
+2026-01-13 16:19:13,225 - src.scraping.parsers.ui_parser - INFO - Opening movie page: https://ua.kinorium.com/100576/
+2026-01-13 16:19:13,828 - src.scraping.parsers.ui_parser - INFO - Browser opened normally. Waiting 30 seconds...
+2026-01-13 16:19:37,180 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: ui_ef008a5d-5b2a-4f79-b244-ecefbd6653c7, for query: Маверік
+2026-01-13 16:19:37,182 - src.utils.decorators - INFO - Task ui_ef008a5d-5b2a-4f79-b244-ecefbd6653c7: Started processing query='Маверік'
+2026-01-13 16:19:37,193 - src.scraping.parsers.ui_parser - INFO - Starting UI mode for movie: Маверік
+2026-01-13 16:19:37,841 - src.utils.decorators - ERROR - Task ui_ef008a5d-5b2a-4f79-b244-ecefbd6653c7: CRITICAL FAILURE
+Traceback (most recent call last):
+  File "C:\Users\sydor\Desktop\testTask\src\utils\decorators.py", line 24, in wrapper
+    result = await func(self, task_id, request, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sydor\Desktop\testTask\src\scraping\services\scraping_service.py", line 67, in _process_scraping
+    return await parser.parse(request.query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sydor\Desktop\testTask\src\scraping\parsers\ui_parser.py", line 20, in parse
+    context = await p.chromium.launch_persistent_context(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\sydor\Desktop\testTask\.venv\Lib\site-packages\playwright\async_api\_generated.py", line 14849, in launch_persistent_context
+    await self._impl_obj.launch_persistent_context(
+  File "c:\Users\sydor\Desktop\testTask\.venv\Lib\site-packages\playwright\_impl\_browser_type.py", line 166, in launch_persistent_context
+    result = await self._channel.send_return_as_dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\sydor\Desktop\testTask\.venv\Lib\site-packages\playwright\_impl\_connection.py", line 83, in send_return_as_dict
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\sydor\Desktop\testTask\.venv\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: BrowserType.launch_persistent_context: Target page, context or browser has been closed
+Browser logs:
+
+<launching> C:\Users\sydor\AppData\Local\ms-playwright\chromium-1200\chrome-win64\chrome.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=AcceptCHFrame,AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --enable-automation --disable-infobars --disable-search-engine-choice-screen --disable-sync --no-sandbox --start-maximized --disable-infobars --disable-notifications --disable-extensions --user-data-dir=C:\Users\sydor\Desktop\testTask\.playwright-ui-profile --remote-debugging-pipe about:blank
+<launched> pid=9772
+Call log:
+  - <launching> C:\Users\sydor\AppData\Local\ms-playwright\chromium-1200\chrome-win64\chrome.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=AcceptCHFrame,AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --enable-automation --disable-infobars --disable-search-engine-choice-screen --disable-sync --no-sandbox --start-maximized --disable-infobars --disable-notifications --disable-extensions --user-data-dir=C:\Users\sydor\Desktop\testTask\.playwright-ui-profile --remote-debugging-pipe about:blank
+  - <launched> pid=9772
+  - [pid=9772] <gracefully close start>
+  - [pid=9772] <kill>
+  - [pid=9772] <will force kill>
+  - [pid=9772] taskkill stderr: ERROR: The process "9772" not found.
+  - [pid=9772] <process did exit: exitCode=21, signal=null>
+  - [pid=9772] starting temporary directories cleanup
+  - [pid=9772] finished temporary directories cleanup
+  - [pid=9772] <gracefully close end>
+
+2026-01-13 16:19:44,022 - src.utils.decorators - INFO - Task ui_92b092a1-9677-4f16-8222-c8b5cf94a882: Completed successfully
+2026-01-13 16:19:46,559 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: ui_4ecc2c66-9cfa-46ca-8772-ab3d46e4f0b2, for query: Маверік
+2026-01-13 16:19:46,561 - src.utils.decorators - INFO - Task ui_4ecc2c66-9cfa-46ca-8772-ab3d46e4f0b2: Started processing query='Маверік'
+2026-01-13 16:19:46,572 - src.scraping.parsers.ui_parser - INFO - Starting UI mode for movie: Маверік
+2026-01-13 16:19:47,243 - src.scraping.parsers.ui_parser - INFO - Opening search page: https://ua.kinorium.com/search/?q=%D0%9C%D0%B0%D0%B2%D0%B5%D1%80%D1%96%D0%BA
+2026-01-13 16:19:47,695 - src.scraping.parsers.ui_parser - INFO - Opening movie page: https://ua.kinorium.com/100576/
+2026-01-13 16:19:48,310 - src.scraping.parsers.ui_parser - INFO - Browser opened normally. Waiting 30 seconds...
+2026-01-13 16:19:52,144 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: ui_15fda13d-edc2-4d1b-b6a2-4118cbbc1b48, for query: Маверік
+2026-01-13 16:19:52,146 - src.utils.decorators - INFO - Task ui_15fda13d-edc2-4d1b-b6a2-4118cbbc1b48: Started processing query='Маверік'
+2026-01-13 16:19:52,159 - src.scraping.parsers.ui_parser - INFO - Starting UI mode for movie: Маверік
+2026-01-13 16:19:52,941 - src.scraping.parsers.ui_parser - INFO - Opening search page: https://ua.kinorium.com/search/?q=%D0%9C%D0%B0%D0%B2%D0%B5%D1%80%D1%96%D0%BA
+2026-01-13 16:19:53,685 - src.scraping.parsers.ui_parser - INFO - Opening movie page: https://ua.kinorium.com/100576/
+2026-01-13 16:19:54,393 - src.scraping.parsers.ui_parser - INFO - Browser opened normally. Waiting 30 seconds...
+2026-01-13 16:20:18,354 - src.utils.decorators - INFO - Task ui_4ecc2c66-9cfa-46ca-8772-ab3d46e4f0b2: Completed successfully
+2026-01-13 16:20:24,427 - src.utils.decorators - INFO - Task ui_15fda13d-edc2-4d1b-b6a2-4118cbbc1b48: Completed successfully
+2026-01-13 16:22:21,565 - __name__ - INFO - Application started
+2026-01-13 16:22:32,756 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: ui_61488ff4-920f-4487-ae7a-2890f22b73f5, for query: Інтерстеллер
+2026-01-13 16:22:32,759 - src.utils.decorators - INFO - Task ui_61488ff4-920f-4487-ae7a-2890f22b73f5: Started processing query='Інтерстеллер'
+2026-01-13 16:22:32,772 - src.scraping.parsers.ui_parser - INFO - Starting UI mode for movie: Інтерстеллер
+2026-01-13 16:22:33,255 - src.utils.decorators - ERROR - Task ui_61488ff4-920f-4487-ae7a-2890f22b73f5: CRITICAL FAILURE
+Traceback (most recent call last):
+  File "C:\Users\sydor\Desktop\testTask\src\utils\decorators.py", line 24, in wrapper
+    result = await func(self, task_id, request, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sydor\Desktop\testTask\src\scraping\services\scraping_service.py", line 67, in _process_scraping
+    return await parser.parse(request.query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sydor\Desktop\testTask\src\scraping\parsers\ui_parser.py", line 22, in parse
+    context = await p.chromium.launch_persistent_context(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\sydor\Desktop\testTask\.venv\Lib\site-packages\playwright\async_api\_generated.py", line 14849, in launch_persistent_context
+    await self._impl_obj.launch_persistent_context(
+  File "c:\Users\sydor\Desktop\testTask\.venv\Lib\site-packages\playwright\_impl\_browser_type.py", line 166, in launch_persistent_context
+    result = await self._channel.send_return_as_dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\sydor\Desktop\testTask\.venv\Lib\site-packages\playwright\_impl\_connection.py", line 83, in send_return_as_dict
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\sydor\Desktop\testTask\.venv\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.Error: BrowserType.launch_persistent_context: Chromium distribution 'chrome' is not found at C:\Users\sydor\AppData\Local\Google\Chrome\Application\chrome.exe
+Run "playwright install chrome"
+2026-01-13 16:25:30,183 - __name__ - INFO - Application started
+2026-01-13 16:25:32,099 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: ui_43001ace-39a9-465c-a631-4f9292910e38, for query: Інтерстеллер
+2026-01-13 16:25:32,102 - src.utils.decorators - INFO - Task ui_43001ace-39a9-465c-a631-4f9292910e38: Started processing query='Інтерстеллер'
+2026-01-13 16:25:32,114 - src.scraping.parsers.ui_parser - INFO - Starting UI mode for movie: Інтерстеллер
+2026-01-13 16:25:35,819 - src.scraping.parsers.ui_parser - INFO - Movie page opened. Waiting 30 seconds...
+2026-01-13 16:25:50,286 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: ui_e289f651-9f7a-4f5f-a185-2db6dfc5fc74, for query: Інтерстеллер
+2026-01-13 16:25:50,290 - src.utils.decorators - INFO - Task ui_e289f651-9f7a-4f5f-a185-2db6dfc5fc74: Started processing query='Інтерстеллер'
+2026-01-13 16:25:50,305 - src.scraping.parsers.ui_parser - INFO - Starting UI mode for movie: Інтерстеллер
+2026-01-13 16:25:52,690 - src.scraping.parsers.ui_parser - INFO - Movie page opened. Waiting 30 seconds...
+2026-01-13 16:25:55,816 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: ui_44525511-59b3-4e45-ac2f-0545115b3e9b, for query: Інтерстеллер
+2026-01-13 16:25:55,818 - src.utils.decorators - INFO - Task ui_44525511-59b3-4e45-ac2f-0545115b3e9b: Started processing query='Інтерстеллер'
+2026-01-13 16:25:55,828 - src.scraping.parsers.ui_parser - INFO - Starting UI mode for movie: Інтерстеллер
+2026-01-13 16:25:58,236 - src.scraping.parsers.ui_parser - INFO - Movie page opened. Waiting 30 seconds...
+2026-01-13 16:26:05,855 - src.utils.decorators - INFO - Task ui_43001ace-39a9-465c-a631-4f9292910e38: Completed successfully
+2026-01-13 16:26:22,733 - src.utils.decorators - INFO - Task ui_e289f651-9f7a-4f5f-a185-2db6dfc5fc74: Completed successfully
+2026-01-13 16:26:28,258 - src.utils.decorators - INFO - Task ui_44525511-59b3-4e45-ac2f-0545115b3e9b: Completed successfully
+2026-01-13 16:27:41,835 - __name__ - INFO - Application started
+2026-01-13 16:27:44,810 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: ui_5bbdf4f8-16fd-46de-9c46-1991d474b461, for query: Інтерстеллер
+2026-01-13 16:27:44,814 - src.utils.decorators - INFO - Task ui_5bbdf4f8-16fd-46de-9c46-1991d474b461: Started processing query='Інтерстеллер'
+2026-01-13 16:27:44,828 - src.scraping.parsers.ui_parser - INFO - Starting UI mode for movie: Інтерстеллер
+2026-01-13 16:27:51,480 - src.scraping.parsers.ui_parser - INFO - Movie page opened directly. Waiting 30 seconds...
+2026-01-13 16:28:21,727 - src.utils.decorators - INFO - Task ui_5bbdf4f8-16fd-46de-9c46-1991d474b461: Completed successfully
+2026-01-13 16:28:58,272 - __name__ - INFO - Application started
+2026-01-13 16:29:03,625 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: ui_9a5c35f4-2949-4be2-830a-77addcbc65c4, for query: Інтерстеллер
+2026-01-13 16:29:03,628 - src.utils.decorators - INFO - Task ui_9a5c35f4-2949-4be2-830a-77addcbc65c4: Started processing query='Інтерстеллер'
+2026-01-13 16:29:03,640 - src.scraping.parsers.ui_parser - INFO - Starting UI mode for movie: Інтерстеллер
+2026-01-13 16:29:07,252 - src.scraping.parsers.ui_parser - INFO - Movie page opened directly. Waiting 30 seconds...
+2026-01-13 16:29:37,270 - src.utils.decorators - INFO - Task ui_9a5c35f4-2949-4be2-830a-77addcbc65c4: Completed successfully
+2026-01-13 16:31:16,381 - __name__ - INFO - Application started
+2026-01-13 16:31:30,409 - __name__ - INFO - Application started
+2026-01-13 16:31:33,927 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: ui_709e2a50-4036-4b36-9fa7-ac960436f3e4, for query: Інтерстеллер
+2026-01-13 16:31:33,930 - src.utils.decorators - INFO - Task ui_709e2a50-4036-4b36-9fa7-ac960436f3e4: Started processing query='Інтерстеллер'
+2026-01-13 16:31:33,943 - src.scraping.parsers.ui_parser - INFO - Starting UI mode: playwright
+2026-01-13 16:32:07,086 - src.utils.decorators - INFO - Task ui_709e2a50-4036-4b36-9fa7-ac960436f3e4: Completed successfully
+2026-01-13 16:33:57,896 - __name__ - INFO - Application started
+2026-01-13 16:33:58,621 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: ui_8998d130-6c1d-46ec-ad32-f70ef5d3da77, for query: Інтерстеллер
+2026-01-13 16:33:58,625 - src.utils.decorators - INFO - Task ui_8998d130-6c1d-46ec-ad32-f70ef5d3da77: Started processing query='Інтерстеллер'
+2026-01-13 16:33:58,638 - src.scraping.parsers.ui_parser - INFO - Starting UI mode: playwright for 'Інтерстеллер'
+2026-01-13 16:33:58,638 - src.scraping.parsers.ui_parser - INFO - Searching for URL for: Інтерстеллер
+2026-01-13 16:34:00,132 - src.utils.decorators - ERROR - Task ui_8998d130-6c1d-46ec-ad32-f70ef5d3da77: CRITICAL FAILURE
+Traceback (most recent call last):
+  File "C:\Users\sydor\Desktop\testTask\src\utils\decorators.py", line 24, in wrapper
+    result = await func(self, task_id, request, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sydor\Desktop\testTask\src\scraping\services\scraping_service.py", line 67, in _process_scraping
+    return await parser.parse(request.query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sydor\Desktop\testTask\src\scraping\parsers\ui_parser.py", line 38, in parse
+    return await self._open_in_playwright(final_url)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sydor\Desktop\testTask\src\scraping\parsers\ui_parser.py", line 52, in _open_in_playwright
+    context = await p.chromium.launch_persistent_context(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\sydor\Desktop\testTask\.venv\Lib\site-packages\playwright\async_api\_generated.py", line 14849, in launch_persistent_context
+    await self._impl_obj.launch_persistent_context(
+  File "c:\Users\sydor\Desktop\testTask\.venv\Lib\site-packages\playwright\_impl\_browser_type.py", line 166, in launch_persistent_context
+    result = await self._channel.send_return_as_dict(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\sydor\Desktop\testTask\.venv\Lib\site-packages\playwright\_impl\_connection.py", line 83, in send_return_as_dict
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\sydor\Desktop\testTask\.venv\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.Error: BrowserType.launch_persistent_context: Chromium distribution 'chrome' is not found at C:\Users\sydor\AppData\Local\Google\Chrome\Application\chrome.exe
+Run "playwright install chrome"
+2026-01-13 16:34:36,882 - __name__ - INFO - Application started
+2026-01-13 16:34:53,942 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: ui_565462cc-2bd5-4ae6-8f0e-043ccbac8c5d, for query: Інтерстеллер
+2026-01-13 16:34:53,946 - src.utils.decorators - INFO - Task ui_565462cc-2bd5-4ae6-8f0e-043ccbac8c5d: Started processing query='Інтерстеллер'
+2026-01-13 16:34:53,959 - src.scraping.parsers.ui_parser - INFO - Starting UI mode: system for 'Інтерстеллер'
+2026-01-13 16:34:53,965 - src.scraping.parsers.ui_parser - INFO - Searching for URL for: Інтерстеллер
+2026-01-13 16:34:55,047 - src.scraping.parsers.ui_parser - INFO - Opening system browser: https://ua.kinorium.com/384511/
+2026-01-13 16:34:55,128 - src.utils.decorators - INFO - Task ui_565462cc-2bd5-4ae6-8f0e-043ccbac8c5d: Completed successfully
+2026-01-13 16:36:24,196 - __name__ - INFO - Application started
+2026-01-13 16:36:48,920 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: ui_361d3db2-5d82-4e62-b737-dfbfbf84d84d, for query: Джентельмени
+2026-01-13 16:36:48,928 - src.utils.decorators - INFO - Task ui_361d3db2-5d82-4e62-b737-dfbfbf84d84d: Started processing query='Джентельмени'
+2026-01-13 16:36:48,940 - src.scraping.parsers.ui_parser - INFO - Starting UI mode for 'Джентельмени'
+2026-01-13 16:36:48,941 - src.scraping.parsers.ui_parser - INFO - Searching for URL for: Джентельмени
+2026-01-13 16:36:50,368 - src.scraping.parsers.ui_parser - INFO - Opening system browser: https://ua.kinorium.com/1670490/
+2026-01-13 16:36:50,447 - src.utils.decorators - INFO - Task ui_361d3db2-5d82-4e62-b737-dfbfbf84d84d: Completed successfully
+2026-01-13 16:40:32,396 - __name__ - INFO - Application started
+2026-01-13 16:40:34,946 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: ui_ddcb1351-5b53-4539-8f80-1a1cce6175fb, for query: Джентельмени
+2026-01-13 16:40:34,951 - src.utils.decorators - INFO - Task ui_ddcb1351-5b53-4539-8f80-1a1cce6175fb: Started processing query='Джентельмени'
+2026-01-13 16:40:34,963 - src.scraping.parsers.ui_parser - INFO - Starting UI mode for 'Джентельмени'
+2026-01-13 16:40:34,963 - src.scraping.parsers.ui_parser - INFO - Searching for URL for: Джентельмени
+2026-01-13 16:40:36,088 - src.scraping.parsers.ui_parser - INFO - Opening system browser: https://ua.kinorium.com/1670490/
+2026-01-13 16:40:36,194 - src.utils.decorators - INFO - Task ui_ddcb1351-5b53-4539-8f80-1a1cce6175fb: Completed successfully
+2026-01-13 16:42:59,827 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: http_3539a017-b363-4e4c-a2dc-c9baaa0c0261, for query: аніме
+2026-01-13 16:42:59,829 - src.utils.decorators - INFO - Task http_3539a017-b363-4e4c-a2dc-c9baaa0c0261: Started processing query='аніме'
+2026-01-13 16:42:59,841 - src.scraping.parsers.http_parser - INFO - Starting scraping for genre 'аніме' (ID: 1) - Page 1
+2026-01-13 16:43:00,578 - httpx - INFO - HTTP Request: GET https://ua.kinorium.com/handlers/filmList/?type=home&order=rating&page=1&perpage=50&show_viewed=1&genres%5B%5D=1 "HTTP/1.1 200 OK"
+2026-01-13 16:43:00,579 - src.scraping.parsers.http_parser - INFO - Received response status: 200
+2026-01-13 16:43:00,594 - src.scraping.parsers.http_parser - INFO - Successfully scraped 6 movies for genre 'аніме' on page 1
+2026-01-13 16:43:00,610 - src.utils.decorators - INFO - Task http_3539a017-b363-4e4c-a2dc-c9baaa0c0261: Completed successfully
+2026-01-13 16:46:40,895 - __name__ - INFO - Application started
+2026-01-13 16:46:52,448 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: ui_609f868f-ab69-4507-9a28-0945563470d1, for query: Джентельмени
+2026-01-13 16:46:52,451 - src.utils.decorators - INFO - Task ui_609f868f-ab69-4507-9a28-0945563470d1: Started processing query='Джентельмени'
+2026-01-13 16:46:52,463 - src.scraping.parsers.ui_parser - INFO - Starting UI mode for 'Джентельмени'
+2026-01-13 16:46:52,955 - src.scraping.parsers.base - INFO - Searching for movie: Джентельмени
+2026-01-13 16:46:53,463 - src.scraping.parsers.ui_parser - INFO - Opening system browser: https://ua.kinorium.com/1670490/
+2026-01-13 16:46:53,542 - src.utils.decorators - INFO - Task ui_609f868f-ab69-4507-9a28-0945563470d1: Completed successfully
+2026-01-13 16:47:01,262 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: headless_43410900-844d-47f8-84b2-55dcee4211b8, for query: Джентельмени
+2026-01-13 16:47:01,264 - src.utils.decorators - INFO - Task headless_43410900-844d-47f8-84b2-55dcee4211b8: Started processing query='Джентельмени'
+2026-01-13 16:47:01,781 - src.scraping.parsers.base - INFO - Searching for movie: Джентельмени
+2026-01-13 16:47:02,328 - src.scraping.parsers.headless_pareser - INFO - Found movie URL: https://ua.kinorium.com/1670490/
+2026-01-13 16:47:03,475 - src.utils.decorators - INFO - Task headless_43410900-844d-47f8-84b2-55dcee4211b8: Completed successfully
+2026-01-13 16:47:36,017 - __name__ - INFO - Application started
+2026-01-13 16:47:40,755 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: ui_fe36b048-598c-4150-be3f-0c78b9b9a9f3, for query: Джентельмени
+2026-01-13 16:47:40,758 - src.utils.decorators - INFO - Task ui_fe36b048-598c-4150-be3f-0c78b9b9a9f3: Started processing query='Джентельмени'
+2026-01-13 16:47:40,773 - src.scraping.parsers.ui_parser - INFO - Starting UI mode for 'Джентельмени'
+2026-01-13 16:47:41,315 - src.scraping.parsers.base - INFO - Searching for movie: Джентельмени
+2026-01-13 16:47:41,854 - src.scraping.parsers.ui_parser - INFO - Opening system browser: https://ua.kinorium.com/1670490/
+2026-01-13 16:47:41,932 - src.utils.decorators - INFO - Task ui_fe36b048-598c-4150-be3f-0c78b9b9a9f3: Completed successfully
+2026-01-13 16:49:42,018 - __name__ - INFO - Application started
+2026-01-13 16:49:43,728 - src.scraping.services.scraping_service - INFO - Created a new scraping task with ID: ui_9226a357-9571-4ec8-ae30-3bf0639f4964, for query: Джентельмени
+2026-01-13 16:49:43,732 - src.utils.decorators - INFO - Task ui_9226a357-9571-4ec8-ae30-3bf0639f4964: Started processing query='Джентельмени'
+2026-01-13 16:49:43,744 - src.scraping.parsers.ui_parser - INFO - Starting UI mode for 'Джентельмени'
+2026-01-13 16:49:44,306 - src.scraping.parsers.base - INFO - Searching for movie: Джентельмени
+2026-01-13 16:49:44,976 - src.scraping.parsers.ui_parser - INFO - Opening system browser: https://ua.kinorium.com/1670490/
+2026-01-13 16:49:45,077 - src.utils.decorators - INFO - Task ui_9226a357-9571-4ec8-ae30-3bf0639f4964: Completed successfully
