@@ -4,7 +4,8 @@ import asyncio
 import uuid
 from src.scraping.schemas import ScrapeRequest, ScrapeResponse, ScrapingMode, TaskStatus
 from src.database.mem_db import save_task, get_task, update_task_status
-from src.scraping.parsers.kinorium import KinoriumParser
+from src.scraping.parsers.headless_pareser import KinoriumHeadlessParser
+from src.scraping.parsers.http_parser import KinoriumHttpParser
 from src.utils.decorators import task_monitor
 
 logger = logging.getLogger(__name__)
@@ -12,8 +13,10 @@ logger = logging.getLogger(__name__)
 class ScrapingService:
 
     def __init__(self):
-        self.parser = KinoriumParser()
-
+        self.parsers = {
+            ScrapingMode.http: KinoriumHttpParser(),
+            ScrapingMode.headless: KinoriumHeadlessParser()
+        }
     async def start(self, request):
         raw_uuid = str(uuid.uuid4())
         task_id = f"{request.mode.value}_{raw_uuid}" # just for easier identification
@@ -54,11 +57,8 @@ class ScrapingService:
 
     @task_monitor
     async def _process_scraping(self, task_id: str, request: ScrapeRequest):
-        if request.mode == ScrapingMode.http:
-            return await self.parser.scrape_by_genre(request.query)
-        
-        elif request.mode == ScrapingMode.headless:
-            return await self.parser.scrape_movie_details(request.query)
-        
-        else:
-            raise ValueError(f"Unsupported scraping mode: {request.mode}")
+        parser = self.parsers.get(request.mode)
+        if not parser:
+            raise ValueError(f"No parser found for mode: {request.mode}")
+
+        return await parser.parse(request.query)
