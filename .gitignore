@@ -55,3 +55,4 @@ temp/
 *.html
 /storage/http/*.json
 /storage/headless/*.json
+/storage/ui/*.json

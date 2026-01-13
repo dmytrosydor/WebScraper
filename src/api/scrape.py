@@ -4,21 +4,19 @@ from src.scraping.services.scraping_service import ScrapingService
 
 router = APIRouter(tags=["scrape"])
 
-# 1. Dependency Injection: Функція, яка створює сервіс
+
 def get_scraping_service():
     return ScrapingService()
 
 @router.post("/scrape", response_model=ScrapeResponse)
 async def scrape_data(
     request: ScrapeRequest,
-    # 2. Отримуємо сервіс через Depends. Це дозволяє легко підмінити його в тестах.
+    
     service: ScrapingService = Depends(get_scraping_service)
 ):
     try:
-        # Логіку перевірки жанру перенесено всередину сервісу (метод start)
         return await service.start(request)
     except ValueError as e:
-        # Сервіс викидає ValueError, якщо жанр невірний, а ми ловимо тут
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error starting scraping task: {str(e)}")

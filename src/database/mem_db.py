@@ -7,6 +7,7 @@ from pathlib import Path
 DATA_DIR = Path("storage")
 (DATA_DIR / "http").mkdir(parents=True, exist_ok=True)
 (DATA_DIR / "headless").mkdir(parents=True, exist_ok=True)
+(DATA_DIR / "ui").mkdir(parents=True, exist_ok=True)
 
 logger = logging.getLogger(__name__)
 
@@ -17,8 +18,8 @@ async def _get_file_path(task_id: str) -> Path:
     except ValueError:
         return DATA_DIR / f"{task_id}.json"
 
-    
-    if mode in ["http", "headless"]:
+
+    if mode in ["http", "headless", "ui"]:
         return DATA_DIR / mode / f"{task_id}.json"
     
     return DATA_DIR / f"{task_id}.json"
