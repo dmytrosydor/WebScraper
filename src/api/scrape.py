@@ -1,32 +1,34 @@
-from fastapi import APIRouter, HTTPException
-from src.scraping.schemas import ScrapeRequest, ScrapeResponse, ScrapingMode
+from fastapi import APIRouter, HTTPException, Depends
+from src.scraping.schemas import ScrapeRequest, ScrapeResponse
 from src.scraping.services.scraping_service import ScrapingService
-from src.config.scraping import GENRES_MAP
+
 router = APIRouter(tags=["scrape"])
 
-scraping_service = ScrapingService()
+# 1. Dependency Injection: Функція, яка створює сервіс
+def get_scraping_service():
+    return ScrapingService()
 
 @router.post("/scrape", response_model=ScrapeResponse)
-async def scrape_data(request: ScrapeRequest):
-    if request.mode == ScrapingMode.http and request.query not in GENRES_MAP:
-        available_genres = list(GENRES_MAP.keys())
-
-        raise HTTPException(
-            status_code=400,
-            detail=f"Invalid genre '{request.query}'. Available genres: {available_genres}",
-        )
-    
+async def scrape_data(
+    request: ScrapeRequest,
+    # 2. Отримуємо сервіс через Depends. Це дозволяє легко підмінити його в тестах.
+    service: ScrapingService = Depends(get_scraping_service)
+):
     try:
-        return await scraping_service.start(request)
+        # Логіку перевірки жанру перенесено всередину сервісу (метод start)
+        return await service.start(request)
+    except ValueError as e:
+        # Сервіс викидає ValueError, якщо жанр невірний, а ми ловимо тут
+        raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error starting scraping task: {str(e)}")
 
-
-# Get status of a scraping task  
 @router.get("/scrape/{task_id}", response_model=ScrapeResponse)
-async def get_scrape_status(task_id: str):
-    task =  await scraping_service.get_status(task_id)
+async def get_scrape_status(
+    task_id: str,
+    service: ScrapingService = Depends(get_scraping_service)
+):
+    task = await service.get_status(task_id)
     if not task:
         raise HTTPException(status_code=404, detail="Task not found")
-
     return task
