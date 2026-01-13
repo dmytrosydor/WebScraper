@@ -3,6 +3,8 @@ import sys
 from pathlib import Path
 from fastapi import FastAPI
 from src.api import main_router 
+from fastapi.exceptions import RequestValidationError
+from src.api.exception_nadler import validation_exception_handler
 
 log_dir = Path("logs")
 log_dir.mkdir(exist_ok=True)
@@ -21,6 +23,7 @@ logging.basicConfig(
 logger = logging.getLogger("__name__")
 
 app = FastAPI()
+app.add_exception_handler(RequestValidationError, validation_exception_handler)
 app.include_router(main_router,prefix="/api")
 
 

@@ -59,4 +59,3 @@ async def update_task_status(task_id: str, status: str, result=None, error_messa
         current_data['error_message'] = error_message
 
     await save_task(task_id, current_data)
-

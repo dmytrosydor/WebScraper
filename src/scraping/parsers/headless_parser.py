@@ -46,7 +46,6 @@ class KinoriumHeadlessParser(KinoriumBaseParser):
             # Title 
             title = await page.text_content("h1.film-page__title-text")
 
-            # ... (решта коду парсингу Year, Rating, Description і т.д. залишається як є) ...
             
             # Original Title
             original_title = None
@@ -76,7 +75,9 @@ class KinoriumHeadlessParser(KinoriumBaseParser):
                         clean_rating = rating_text.strip().replace(".", "")
                         if clean_rating.isdigit():
                             rating = float(rating_text.strip())
-            except: pass
+            except Exception as e:
+                logger.debug(f"Failed to parse rating: {str(e)}")
+                pass
 
             # Description
             description = None

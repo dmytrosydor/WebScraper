@@ -1,0 +1,305 @@
+{
+	"info": {
+		"_postman_id": "79d2754e-c345-48c6-b308-f32066849a49",
+		"name": "Kinorium Scraper",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39990176"
+	},
+	"item": [
+		{
+			"name": "1 Method (http)",
+			"item": [
+				{
+					"name": "1. Start Genres Scrape",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"query\": \"бойовик\",\r\n    \"mode\": \"http\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/scrape",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"scrape"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2 . Wrong Query",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"query\": \"Анім768312eе\",\r\n    \"mode\": \"http\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/scrape",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"scrape"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "2 Method (Headless)",
+			"item": [
+				{
+					"name": "1. Movie Details Scrape",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"query\": \"Матриця\",\r\n    \"mode\": \"headless\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/scrape",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"scrape"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2 . Wrong Query Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"query\": \"38290523-05-2-f2lepflpe2-pf\",\r\n    \"mode\": \"headless\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/scrape",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"scrape"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3 .  Film with limited data on Kinorium",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"query\": \"Анджелика\",\r\n    \"mode\": \"headless\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/scrape",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"scrape"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "3 Method (UI)",
+			"item": [
+				{
+					"name": "1. Open a movie in web",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"query\": \"Інтерстеллер\",\r\n    \"mode\": \"ui\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/scrape",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"scrape"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. Bad query",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"query\": \"2156784-0ві-мівміють-= omv\",\r\n    \"mode\": \"ui\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/scrape",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"scrape"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3. Unreal to find request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"query\": \"6328790-2g=-b94or-9r3-9jo9-bjv3r\",\r\n    \"mode\": \"ui\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/scrape",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"scrape"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Health Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/health",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Wrong Mode",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"query\": \"Аніме\",\r\n    \"mode\": \"uidsa\"\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/scrape",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"scrape"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": ""
+		},
+		{
+			"key": "current_task_id",
+			"value": ""
+		}
+	]
+}
