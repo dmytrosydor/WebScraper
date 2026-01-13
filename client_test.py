@@ -1,10 +1,10 @@
 import time
 import requests
 
-# Конфігурація
+
 BASE_URL = "http://127.0.0.1:8000/api"
 
-# Список жанрів (для підказки користувачу)
+
 VALID_GENRES = [
     "аніме", "біографія", "бойовик", "вестерн", "військовий", "детектив",
     "документальний", "драма", "жахи", "історія", "комедія", "концерт",
@@ -17,7 +17,6 @@ def print_separator():
     print("-" * 50)
 
 def poll_task_status(task_id):
-    """Функція опитування статусу (Polling)"""
     print(f"[OK] Задача створена! ID: {task_id}")
     print("Очікування результату (оновлення кожні 1 сек)...")
     
@@ -70,7 +69,7 @@ def run_genre_scraping():
         if result:
             print_separator()
             print(f"Знайдено фільмів: {len(result)}")
-            # Виводимо перші 10 результатів
+           
             for idx, movie in enumerate(result[:10], 1):
                 print(f"{idx}. {movie['title']} ({movie['link']})")
             if len(result) > 10:
