@@ -6,6 +6,7 @@ from src.scraping.schemas import ScrapeRequest, ScrapeResponse, ScrapingMode, Ta
 from src.database.mem_db import save_task, get_task, update_task_status
 from src.scraping.parsers.headless_pareser import KinoriumHeadlessParser
 from src.scraping.parsers.http_parser import KinoriumHttpParser
+from src.scraping.parsers.ui_parser import KinoriumUIParser 
 from src.utils.decorators import task_monitor
 
 logger = logging.getLogger(__name__)
@@ -15,8 +16,10 @@ class ScrapingService:
     def __init__(self):
         self.parsers = {
             ScrapingMode.http: KinoriumHttpParser(),
-            ScrapingMode.headless: KinoriumHeadlessParser()
+            ScrapingMode.headless: KinoriumHeadlessParser(),
+            ScrapingMode.ui: KinoriumUIParser(),
         }
+
     async def start(self, request):
         raw_uuid = str(uuid.uuid4())
         task_id = f"{request.mode.value}_{raw_uuid}" # just for easier identification

@@ -1,7 +1,6 @@
 import logging
 import httpx
 from bs4 import BeautifulSoup
-from playwright.async_api import async_playwright
 
 from src.scraping.schemas import MovieShort
 from src.config.scraping import (

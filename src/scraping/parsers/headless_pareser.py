@@ -2,60 +2,39 @@ import logging
 from playwright.async_api import async_playwright
 import re
 
-import urllib
-
 from src.scraping.schemas import MovieDetails
-from src.config.scraping import (
-    scraping_config,
-)
-
+from src.config.scraping import scraping_config
+from src.scraping.parsers.base import KinoriumBaseParser # Імпортуємо базу
 
 logger = logging.getLogger(__name__)
 
+class KinoriumHeadlessParser(KinoriumBaseParser): # Успадковуємось
     
-
-
-class KinoriumHeadlessParser:
     async def parse(self, movie_title: str) -> MovieDetails:
         async with async_playwright() as p:
             
-            browser = await p.chromium.launch(
-                headless=True,
-                args=["--no-sandbox", "--disable-setuid-sandbox", "--disable-gpu"] # a bit optimization
-            )
-            page = await browser.new_page(
-                user_agent=scraping_config.user_agent
-            )
+            # 1. Запуск (спільна логіка)
+            browser = await self._launch_browser(p)
+            
+            page = await browser.new_page(user_agent=scraping_config.user_agent)
+            
+            # Унікальна оптимізація для headless (блокування картинок) залишається тут
             await page.route("**/*", lambda route: route.abort() 
-                if route.request.resource_type in [ "image", "media", "font", "stylesheet"] # block all unneeded resources
+                if route.request.resource_type in ["image", "media", "font", "stylesheet"]
                 else route.continue_()
             )
-            # Film search 
-            encoded_query = urllib.parse.quote(movie_title) # type: ignore
-            search_url = f"{scraping_config.base_url}/search/?q={encoded_query}"
-            logger.info(f"Searching for movie: {movie_title} using URL: {search_url}")
             
-            await page.goto(search_url, timeout=30000)
-            results = page.locator("a.search-page__title-link")
-            
-            if await results.count() == 0:
+            # 2. Пошук (спільна логіка)
+            # Ми отримуємо URL і переходимо на нього, замість того щоб дублювати код пошуку
+            try:
+                kinorium_url = await self._search_movie_url(page, movie_title)
+                logger.info(f"Found movie URL: {kinorium_url}")
+                await page.goto(kinorium_url, wait_until="domcontentloaded")
+            except ValueError as e:
                 await browser.close()
-                raise ValueError("Movie not found in search results")
+                raise e
 
-            movie_href = await results.first.get_attribute("href")
-
-            if not movie_href:
-                await browser.close()
-                raise ValueError("Movie link attribute is empty")
-
-            kinorium_url = (
-                scraping_config.base_url + movie_href
-                if movie_href.startswith("/")
-                else movie_href
-            )
-
-            
-            await page.goto(kinorium_url, wait_until="domcontentloaded")
+            # 3. Парсинг деталей (Це унікальна логіка цього класу, вона лишається без змін)
             
             # wait for main title to load
             try:
@@ -64,66 +43,59 @@ class KinoriumHeadlessParser:
                 await browser.close()
                 raise ValueError("Page loaded but title element not found")
 
-            
-
             # Title 
             title = await page.text_content("h1.film-page__title-text")
 
-            # Original Title (may be absent)
+            # ... (решта коду парсингу Year, Rating, Description і т.д. залишається як є) ...
+            
+            # Original Title
             original_title = None
             try:
                 orig_title_loc = page.locator("span[itemprop='alternativeHeadline']")
-                # Чекаємо зовсім трохи (200мс)
-                await orig_title_loc.wait_for(state="attached", timeout=200)
-                original_title = await orig_title_loc.text_content()
-            except:
-                pass 
+                if await orig_title_loc.count() > 0:
+                    original_title = await orig_title_loc.text_content()
+            except: pass 
 
             # Year
             year = None
             try:
                 year_loc = page.locator("span.film-page__date a")
-                await year_loc.wait_for(state="attached", timeout=200)
-                year_text = await year_loc.text_content()
-                if year_text and year_text.isdigit():
-                    year = int(year_text)
-            except:
-                pass
+                if await year_loc.count() > 0:
+                    year_text = await year_loc.text_content()
+                    if year_text and year_text.isdigit():
+                        year = int(year_text)
+            except: pass
 
-            # Rating (may be absent)
+            # Rating
             rating = None
-            rating_locator = page.locator("div.film-page__title-rating")
             try:
-                await rating_locator.wait_for(state="attached", timeout=200)
-                rating_text = await rating_locator.text_content()
-                rating_text = rating_text.strip() # type: ignore
-                if rating_text and rating_text.replace(".", "").isdigit():
-                    rating = float(rating_text)
-            except:
-                pass 
+                rating_loc = page.locator("div.film-page__title-rating")
+                if await rating_loc.count() > 0:
+                    rating_text = await rating_loc.text_content()
+                    if rating_text:
+                        clean_rating = rating_text.strip().replace(".", "")
+                        if clean_rating.isdigit():
+                            rating = float(rating_text.strip())
+            except: pass
 
             # Description
             description = None
             try:
                 desc_loc = page.locator("section.film-page__text[itemprop='description']")
-                await desc_loc.wait_for(state="attached", timeout=200)
-                description = await desc_loc.text_content()
-            except:
-                pass
+                if await desc_loc.count() > 0:
+                    description = await desc_loc.text_content()
+            except: pass
 
             genres = await page.eval_on_selector_all(
-                "li[itemprop='genre'] a",
-                "els => els.map(e => e.textContent.trim())"
+                "li[itemprop='genre'] a", "els => els.map(e => e.textContent.trim())"
             )
 
             countries = await page.eval_on_selector_all(
-                "a[itemprop='countryOfOrigin']",
-                "els => els.map(e => e.textContent.trim())"
+                "a[itemprop='countryOfOrigin']", "els => els.map(e => e.textContent.trim())"
             )
             
             production_studios = await page.eval_on_selector_all(
-                "span.film-page__company a nobr",
-                "els => els.map(e => e.textContent.trim())"
+                "span.film-page__company a nobr", "els => els.map(e => e.textContent.trim())"
             )
 
             actors = await page.eval_on_selector_all(
@@ -140,28 +112,23 @@ class KinoriumHeadlessParser:
                     try:
                         row = rows.nth(i)
                         legend_loc = row.locator("td.legend")
-                        
-                        await legend_loc.wait_for(state="attached", timeout=100)
-                        legend = await legend_loc.text_content()
+                        legend = await legend_loc.text_content() if await legend_loc.count() > 0 else ""
                         
                         if legend and "тривалість" in legend.lower():
                             data_loc = row.locator("td.data")
-                            await data_loc.wait_for(state="attached", timeout=100)
-                            duration_text = await data_loc.text_content()
+                            duration_text = await data_loc.text_content() if await data_loc.count() > 0 else ""
                             
                             if duration_text:
-                                # Regex для "1 год 30 хв" АБО "38 хв"
                                 match = re.search(r"(\d+)\s*год\s*(\d+)\s*хв|(\d+)\s*хв", duration_text)
                                 if match:
-                                    if match.group(3): # Тільки хвилини (наприклад "38 хв")
+                                    if match.group(3): 
                                         duration_minutes = int(match.group(3))
-                                    else: # Години і хвилини
+                                    else: 
                                         h = int(match.group(1) or 0)
                                         m = int(match.group(2) or 0)
                                         duration_minutes = h * 60 + m
                             break
-                    except:
-                        continue
+                    except: continue
 
             await browser.close()
 
