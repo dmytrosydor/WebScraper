@@ -103,7 +103,8 @@ uvicorn src.main:app
 
 **Postman** У папці `postman_collection` знаходиться готова колекція запитів.
 * **Імпорт:** Postman → File → Import → обрати `.json` файл.
-
+* Також зайдіть в вкладку **Variables** у колекції та додайте змінну base_url  `http://localhost:8000/api`
+  
 ---
 
 ## ⚙️ Параметр mode
