@@ -97,6 +97,7 @@ source .venv/bin/activate
 ### Встановлення та запуск
 ```
 pip install -r requirements.txt
+playwright install
 uvicorn src.main:app
 ```
 📄 **FasApi Docs:** [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
