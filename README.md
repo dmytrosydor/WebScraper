@@ -50,6 +50,7 @@ docker run -d -p 8000:8000 --name my-app-instance dmytrosydor/webscraper:latest
 ### Варіант 1 — Postman
 У папці `postman_collection` знаходиться готова колекція запитів.
 * **Імпорт:** Postman → File → Import → обрати `.json` файл.
+* Також зайдіть в вкладку **Variables** у колекції та додайте змінну base_url  `http://localhost:8000/api`
 
 ### Варіант 2 — Python client (Docker образ повинен бути запущений)
 Оскільки Docker не може відкривати вікно браузера, для тестування 3 режиму ( відкриття вікна у браузері ) використовується клієнтський скрипт `client_test.py`.
